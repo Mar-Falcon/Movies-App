@@ -1,10 +1,22 @@
 import "./App.scss";
-import Cards from "./components/Cards";
 
-function App() {
+import { Route, Switch } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
+
+import { Admin, Home, Items, Login, SignUp } from "./Pages";
+
+const App = () => {
   return (
     <div className="App">
-          <Cards/>
+      <BrowserRouter>      
+        <Switch>        
+          <Route path="/signUp" component={SignUp}/> 
+          <Route path="/admin" component={Admin}/> 
+          <Route path="/items" component={Items}/> 
+          <Route path="/login" component={Login}/>           
+          <Route path="/" component={Home}/>          
+        </Switch>
+      </BrowserRouter>           
     </div>
   );
 }
