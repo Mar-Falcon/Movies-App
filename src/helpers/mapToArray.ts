@@ -1,4 +1,4 @@
-const mapToArray = (object: any) => {
+export const mapToArray = (object: any) => {
 	const array = [];
       
 	for (const elem in object) {
@@ -9,6 +9,4 @@ const mapToArray = (object: any) => {
 	}
       
 	return array;
-};      
-
-export { mapToArray };
+};

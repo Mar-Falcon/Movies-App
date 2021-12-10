@@ -1,9 +1,12 @@
 import { FC } from "react";
+import { AddUsers } from "../../components/forms/AddUsers";
 
 const SignUp: FC = () => {
 	return (
 		<>
-		<div>SignUp</div>
+		<div>SignUp
+			<AddUsers/>
+		</div>
 		</>
 	);
 };
