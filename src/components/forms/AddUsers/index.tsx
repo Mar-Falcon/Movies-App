@@ -19,36 +19,37 @@ const AddUsers: FC = () => {
 	};
       
 	return (
-	  <form action="" onSubmit={handleSubmit(onSubmit)}>
-	    <div className="form-group">
-	      <label htmlFor="">name</label>
-	      <input type="text" {...register("name")} />
+	  <form action="" onSubmit={handleSubmit(onSubmit)} className="container row g-3">
+	    <div className="col-md-3">
+	      <label htmlFor="" className="form-label">Name</label>
+	      <input type="text" {...register("name")} className="form-control"/>
 	      <span className="text-danger">{formState.errors.name?.message}</span>
 	    </div>
-	    <div className="form-group">
-	      <label htmlFor="">lastname</label>
-	      <input type="text" {...register("name")} />
+	    <div className="col-md-3">
+	      <label htmlFor=""className="form-label">Lastname</label>
+	      <input type="text" {...register("lastName")} className="form-control" />
 	      <span className="text-danger">{formState.errors.name?.message}</span>
 	    </div>
-	    <div className="form-group">
-	      <label htmlFor="">birthdate</label>
-	      <input type="Date" {...register("birthdate")} />
+	    <div className="col-md-6">
+	      <label htmlFor="" className="form-label">Birthdate</label>
+	      <input type="Date" {...register("birthdate")} className="form-control"/>
 	      <span className="text-danger">{formState.errors.birthdate}</span>
 	    </div>      
 	    <div className="form-group">
-	      <label htmlFor="">email</label>
-	      <input type="email" {...register("email")} />
+	      <label htmlFor="" className="form-label">E-mail</label>
+	      <input type="email" {...register("email")} className="form-control" />
 	      <span className="text-danger">{formState.errors.email?.message}</span>
 	    </div>      
 	    <div className="form-group">
-	      <label htmlFor="">password</label>
-	      <input type="password" {...register("password")} />
+	      <label htmlFor="" className="form-label">Password</label>
+	      <input type="password" {...register("password")} className="form-control" />
 	      <span className="text-danger">
 		{formState.errors.password?.message}
 	      </span>
 	    </div>    
-	    
-	    <button type="submit">Enviar</button>
+	    <div className="col-12">
+	    <button type="submit" className= "btn btn-primary">Enviar</button>
+	    </div>
 	  </form>
 	);
       };

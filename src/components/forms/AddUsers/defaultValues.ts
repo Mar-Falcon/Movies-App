@@ -1,7 +1,9 @@
+import { date } from "yup/lib/locale";
+
 export const defaultValues = {
 	name: "",
 	lastName: "",
 	email: "",
 	password: "",
-	birthdate: 0,	
+	birthdate: date,	
 };
