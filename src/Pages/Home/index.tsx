@@ -1,12 +1,13 @@
 import { FC } from "react";
 import { Cards } from "../../components";
+import { Layout } from "../../components/layout";
 
 const Home: FC = () => {
 	return (
 		<>
-		<div>Home
+		<Layout>
 			<Cards/>
-		</div>
+		</Layout>
 		</>
 	);
 };
