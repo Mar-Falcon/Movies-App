@@ -15,7 +15,15 @@ const useUsers = () => {
 		setUsers(response);
 	}
 
-	return { addUser, getUsers, users};
+	const deleteUser = async (id: string) =>{
+		if (window.confirm("are you sure you want to delete this user?")){
+			 await usersApi.deleteUser(id);	
+		}
+	}
+
+
+
+	return { addUser, getUsers, users, deleteUser};
 
 }
 

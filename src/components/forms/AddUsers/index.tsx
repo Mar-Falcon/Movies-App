@@ -1,10 +1,10 @@
 import { FC } from "react";
 import { useForm } from "react-hook-form";
-import { useUsers } from "../../../hooks/useUsers";
 import { AddUserType } from "../../../types";
 import { defaultValues } from "./defaultValues";
 import { validationSchema } from "./validationSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useUsers } from "../../../hooks";
 
 const AddUsers: FC = () => {
 	const { addUser } = useUsers();
@@ -17,8 +17,6 @@ const AddUsers: FC = () => {
 	const onSubmit = async (data: AddUserType) => {
 	  await addUser(data);
 	};
-
-
       
 	return (
 	  <form action="" onSubmit={handleSubmit(onSubmit)} className="container row g-3">
@@ -54,6 +52,6 @@ const AddUsers: FC = () => {
 	    </div>
 	  </form>
 	);
-      };
+};
       
-      export { AddUsers };
+export { AddUsers };

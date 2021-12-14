@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { UsersTable } from "../../components/parts/UsersTable";
+import { UsersTable } from "../../components";
 
 const Users: FC = () => {
 	return (

@@ -1,14 +1,14 @@
 import { useEffect, FC } from "react";
-import { useUsers } from "../../../hooks/useUsers";
-import { AddUserType } from "../../../types";
+import { useUsers } from "../../../hooks";
 
 const UsersTable: FC = () => {
 
-	const { users, getUsers } = useUsers();
+	const { users, getUsers, deleteUser } = useUsers();		
 
 	useEffect(() => {
-		getUsers();		
-	}, []);
+		getUsers();
+								
+	}, [getUsers, users]);		
 
 	return(
 		<table className="container table">
@@ -21,13 +21,13 @@ const UsersTable: FC = () => {
 				</tr>
 			</thead>
 			<tbody>
-				{users?.map((user: AddUserType) => (
+				{users?.map((user) => (
 				<tr>					
 					<td>{user.name}</td>
 					<td>{user.lastName}</td>
 					<td>{user.email}</td>
 					<td>{user.birthdate}</td>
-					<td>{} <button className="btn btn-danger">Eliminar</button></td>
+					<td><button className="btn btn-danger" onClick={()=> deleteUser(user.id)}>Eliminar</button></td>
 				</tr>
 				))}			
 			</tbody>

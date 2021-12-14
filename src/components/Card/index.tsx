@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { FC } from 'react';
 
-function Card() {
+const Card: FC = () => {
 	return (
 		<div className="card">
 			<img src="" alt="" />
@@ -16,4 +16,4 @@ function Card() {
 	)
 }
 
-export default Card
+export {Card};

@@ -1,7 +1,7 @@
-import React from 'react'
-import Card from '../Card'
+import React, { FC } from 'react'
+import { Card } from '../Card'
 
-function Cards() {
+const Cards: FC = () => {
 	return (
 		<div className="container d-flex justify-content-center align-items-center h-100">
 			<div className="row">
@@ -13,4 +13,4 @@ function Cards() {
 	)
 }
 
-export default Cards
+export { Cards }

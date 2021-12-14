@@ -1,2 +1,1 @@
-
 export { mapToArray } from "./mapToArray";
