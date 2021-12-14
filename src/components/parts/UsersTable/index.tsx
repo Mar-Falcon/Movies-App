@@ -1,4 +1,5 @@
 import { useEffect, FC } from "react";
+import { convertDateFormat } from "../../../helpers";
 import { useUsers } from "../../../hooks";
 
 const UsersTable: FC = () => {
@@ -26,7 +27,7 @@ const UsersTable: FC = () => {
 					<td>{user.name}</td>
 					<td>{user.lastName}</td>
 					<td>{user.email}</td>
-					<td>{user.birthdate}</td>
+					<td>{convertDateFormat(user.birthdate)}</td>
 					<td><button className="btn btn-danger" onClick={()=> deleteUser(user.id)}>Eliminar</button></td>
 				</tr>
 				))}			
