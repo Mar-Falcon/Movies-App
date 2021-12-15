@@ -1,6 +1,5 @@
 import { FC } from "react";
-import { AddUsers } from "../../components";
-import { Layout } from "../../components/layout";
+import { AddUsers, Layout } from "../../components";
 
 const SignUp: FC = () => {
 	return (

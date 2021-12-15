@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Layout } from "../../components/layout";
+import { Layout } from "../../components";
 
 const Login: FC = () => {
 	return (

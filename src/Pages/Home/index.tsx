@@ -1,6 +1,5 @@
 import { FC } from "react";
-import { Cards } from "../../components";
-import { Layout } from "../../components/layout";
+import { Cards, Layout } from "../../components";
 
 const Home: FC = () => {
 	return (
