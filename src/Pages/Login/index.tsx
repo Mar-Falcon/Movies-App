@@ -1,11 +1,11 @@
 import { FC } from "react";
-import { Layout } from "../../components";
+import { LoginUser } from "../../components";
 
 const Login: FC = () => {
 	return (
-		<Layout>
-		<div>Login</div>
-		</Layout>
+		<>
+		<LoginUser/>
+		</>
 	);
 };
 
