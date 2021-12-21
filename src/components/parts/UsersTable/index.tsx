@@ -1,4 +1,4 @@
-import { faStoreAltSlash, faTrash, faTrashAlt, faTrashRestore } from "@fortawesome/free-solid-svg-icons";
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, FC } from "react";
 import { convertDateFormat } from "../../../helpers";
