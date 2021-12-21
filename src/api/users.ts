@@ -1,4 +1,4 @@
-import { AddUserType, User } from "../types/models";
+import { AddUserType, User } from "../types";
 import { api } from "../utils";
 import { mapToArray } from "../helpers";
 
