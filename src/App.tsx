@@ -4,9 +4,13 @@ import "bootstrap/dist/js/bootstrap.bundle";
 
 import { Route, Switch } from "react-router-dom";
 import { BrowserRouter } from "react-router-dom";
-
-import { Admin, Home, MoviesPage, Login, SignUp, SeriesPage } from "./Pages";
-import { Users } from "./Pages/Users";
+import SignUp from "./Pages/SignUp";
+import Admin from "./Pages/Admin";
+import Login from "./Pages/Login";
+import Users from "./Pages/Users";
+import Home from "./Pages/Home";
+import MoviesPage from "./Pages/MoviesPage";
+import SeriesPage from "./Pages/SeriesPage";
 
 const App = () => {
   return (

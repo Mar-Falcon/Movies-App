@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { Layout, Movies } from "../../components";
+import { WithAuth } from "../../hoc";
 
 const MoviesPage: FC = () => {
 	return (
@@ -9,4 +10,4 @@ const MoviesPage: FC = () => {
 	);
 };
 
-export { MoviesPage };
+export default WithAuth(MoviesPage);

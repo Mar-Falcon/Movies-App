@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { Layout, UsersTable } from "../../components";
+import { WithAuth } from "../../hoc";
 
 const Users: FC = () => {
 	return (
@@ -9,4 +10,4 @@ const Users: FC = () => {
 	);
 };
 
-export { Users };
+export default WithAuth(Users);

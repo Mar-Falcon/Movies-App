@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { AddUsers } from "../../components";
+import { WithAuth } from "../../hoc";
 
 const SignUp: FC = () => {
 	return (
@@ -14,4 +15,4 @@ const SignUp: FC = () => {
 	);
 };
 
-export { SignUp };
+export default WithAuth(SignUp);
