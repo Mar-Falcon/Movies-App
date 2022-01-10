@@ -6,3 +6,4 @@ export { Layout} from "./mainLayout";
 export { LoginUser } from "./forms";
 export { Movies } from "./parts";
 export { Series } from "./parts";
+export { Loading } from "./parts";
