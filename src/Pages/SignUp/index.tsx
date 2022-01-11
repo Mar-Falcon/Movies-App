@@ -15,4 +15,4 @@ const SignUp: FC = () => {
 	);
 };
 
-export default WithAuth(SignUp);
+export default WithAuth( SignUp );

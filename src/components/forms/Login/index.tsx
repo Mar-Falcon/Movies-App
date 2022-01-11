@@ -3,8 +3,8 @@ import { FC } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../../../hooks";
-import { defaultValues } from "../AddUsers/defaultValues";
-import { validationSchema } from "../AddUsers/validationSchema";
+import { defaultValues } from "./defaultValues";
+import { validationSchema } from "./validationSchema";
 
 const LoginUser: FC = () => {  
 	
@@ -19,8 +19,7 @@ const LoginUser: FC = () => {
 	const onSubmit = async (data: { email: string; password: string }) => {
 		
 		  await login(data.email, data.password);
-		  push("/");
-		 
+		  push("/");		 
 		
 	      };
       

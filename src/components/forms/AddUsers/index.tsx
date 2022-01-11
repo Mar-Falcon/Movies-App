@@ -5,18 +5,24 @@ import { defaultValues } from "./defaultValues";
 import { validationSchema } from "./validationSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useUsers } from "../../../hooks";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const AddUsers: FC = () => {
 	const { addUser } = useUsers();
+	const { push } = useHistory();
       
-	const { handleSubmit, register, formState } = useForm({
+	const { handleSubmit, register, formState} = useForm<AddUserType>({
 	  defaultValues,
 	  resolver: yupResolver(validationSchema),
 	});
       
 	const onSubmit = async (data: AddUserType) => {
-	  await addUser(data);
+		try{
+			await addUser(data);	
+			push("/login")
+		} catch (error){
+			console.log(error);			
+		}	  
 	};
       
 	return (
