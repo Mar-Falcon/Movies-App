@@ -9,4 +9,6 @@ export type User = {
 };
       
 export type AddUserType = Omit<User, "id">;
+
+
       

@@ -1,11 +1,42 @@
-import { useEffect, useState } from "react";
+
+import { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { AuthContext } from "../../context/Auth";
 import { mapToArray } from "../../helpers";
 import { User } from "../../types";
 import { api } from "../../utils";
 
 const useAuth = ()  => {
-	//const { setCurrentUser } = useContext(AuthContext);
+	
+	const login = async (email: string, password: string) => {
+		try {
+		    const response = await api.get("/users.json");
+		
+		    /* Tarea de backend */
+		    const users: User[] = mapToArray(response.data);
+		
+		    const user = users.find(
+			(user) => user.email === email && user.password === password
+		    );
+		
+		    if (user) {
+			// Definir un token
+			const token = await createUserToken(user);
+		
+			if (token) {
+			setTokenStorage(token)
+			setCurrentUser(user);
+			}
+		    } else {
+			throw new Error("El usuario no existe");
+		    }
+		    /* / Tarea de backend */
+		    } catch (e) {
+		    console.log(e);
+		    }
+	    };
+	
+	const { setCurrentUser } = useContext(AuthContext);
 	const [ tokenStorage, setTokenStorage] = useState <string | undefined>(
 	    localStorage.getItem('user-token') || undefined)
     
@@ -30,33 +61,7 @@ const useAuth = ()  => {
 		if(tokenStorage) localStorage.setItem('user-token', tokenStorage)
 	    },[tokenStorage])
     
-	    const login = async (email: string, password: string) => {
-		try {
-		    const response = await api.get("/users.json");
-		
-		    /* Tarea de backend */
-		    const users: User[] = mapToArray(response.data);
-		
-		    const user = users.find(
-			(user) => user.email === email && user.password === password
-		    );
-		
-		    if (user) {
-			// Definir un token
-			const token = await createUserToken(user);
-		
-			if (token) {
-			setTokenStorage(token)
-			//setCurrentUser(user);
-			}
-		    } else {
-			throw new Error("El usuario no existe");
-		    }
-		    /* / Tarea de backend */
-		    } catch (e) {
-		    console.log(e);
-		    }
-	    };
+	    
 	    const loginWithToken = async () => {
 		let user;
 		try {
@@ -70,7 +75,7 @@ const useAuth = ()  => {
 		    }
 		
 		    if (user) {
-			//setCurrentUser(user);
+			setCurrentUser(user);
 			setHasUserLoggedIn(true);
 		    } else {
 			setHasUserLoggedIn(false);
@@ -83,13 +88,14 @@ const useAuth = ()  => {
 	    const logout = () => {
 		localStorage.removeItem('user-token')
 		push('/login')
-		//setCurrentUser(undefined)
+		setCurrentUser(undefined)
 	    };
     
 	    const signUp = () => {};
     
 	return { login, loginWithToken, logout, signUp, hasUserLoggedIn  }
     }
+    
     
     export { useAuth }
     

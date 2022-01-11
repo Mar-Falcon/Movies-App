@@ -1,19 +1,20 @@
-import { Component, FC } from "react";
+import { FC } from "react";
 import { useHistory } from "react-router-dom";
 import { Loading } from "../../components";
 import { useAuth } from "../../hooks";
 
-const publicRoutes = ["/login", "/sign-up"]; 
+
+const publicRoutes = ["/login", "/signup"]; 
 
 type withAuthenticationFn = (Component: FC) => FC;
 
-const WithAuth: withAuthenticationFn = () => {
+const WithAuth: withAuthenticationFn = (Component) => {
 
 	const Authenticated: FC = (): JSX.Element | null => {
 
 		const { push, location } = useHistory();
-        
-    		const { hasUserLoggedIn } = useAuth();
+		
+		const { hasUserLoggedIn } = useAuth();
     
     		//console.log(hasUserLoggedIn);
     		if (hasUserLoggedIn === undefined) return <Loading />;
@@ -25,7 +26,7 @@ const WithAuth: withAuthenticationFn = () => {
     		return <Component />;
     	};	
 
-	return Authenticated
+	return Authenticated;
 
 };
 

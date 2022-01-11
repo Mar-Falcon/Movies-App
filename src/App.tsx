@@ -11,13 +11,15 @@ import Users from "./Pages/Users";
 import Home from "./Pages/Home";
 import MoviesPage from "./Pages/MoviesPage";
 import SeriesPage from "./Pages/SeriesPage";
+import { AuthProvider } from "./context/Auth";
 
 const App = () => {
   return (
+    <AuthProvider>
     <div className="App">
       <BrowserRouter>      
         <Switch>        
-          <Route path="/signUp" component={SignUp}/> 
+          <Route path="/signup" component={SignUp}/> 
           <Route path="/admin" component={Admin}/> 
           <Route path="/movies" component={MoviesPage}/> 
           <Route path="/series" component={SeriesPage}/> 
@@ -27,6 +29,7 @@ const App = () => {
         </Switch>
       </BrowserRouter>           
     </div>
+    </AuthProvider>    
   );
 }
 

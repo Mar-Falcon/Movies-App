@@ -3,6 +3,8 @@ import { LoginUser } from "../../components";
 import { WithAuth } from "../../hoc";
 
 const Login: FC = () => {
+
+	
 	return (
 		<>
 		<LoginUser/>
@@ -10,4 +12,4 @@ const Login: FC = () => {
 	);
 };
 
-export default WithAuth(Login) ;
+export default WithAuth( Login );
