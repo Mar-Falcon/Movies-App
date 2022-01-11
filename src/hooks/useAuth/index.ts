@@ -12,7 +12,7 @@ const useAuth = ()  => {
 		try {
 		    const response = await api.get("/users.json");
 		
-		    /* Tarea de backend */
+		    // Backend 
 		    const users: User[] = mapToArray(response.data);
 		
 		    const user = users.find(
@@ -20,7 +20,7 @@ const useAuth = ()  => {
 		    );
 		
 		    if (user) {
-			// Definir un token
+			// Token
 			const token = await createUserToken(user);
 		
 			if (token) {
@@ -30,11 +30,11 @@ const useAuth = ()  => {
 		    } else {
 			throw new Error("El usuario no existe");
 		    }
-		    /* / Tarea de backend */
-		    } catch (e) {
+		    // /Backend 
+		}catch (e) {
 		    console.log(e);
-		    }
-	    };
+		}
+	};
 	
 	const { setCurrentUser } = useContext(AuthContext);
 	const [ tokenStorage, setTokenStorage] = useState <string | undefined>(
@@ -48,26 +48,25 @@ const useAuth = ()  => {
 	},[])
     
 	const createUserToken = async (user: User): Promise<string | null> => {
-	    try {
+		try {
 		const newToken = Math.random().toString(36).substr(2);
-		await api.patch(`/users/${user.id}.json`, { sessionToken: newToken });
+		await api.patch(`/users/${user.id}.json`, { sessionToken: newToken });		
 		return newToken;
-		} catch (err) {
+		}catch (err) {
 		return null;
 		}
-	    };
+	};
     
-	    useEffect ( () => {
+	useEffect ( () => {
 		if(tokenStorage) localStorage.setItem('user-token', tokenStorage)
-	    },[tokenStorage])
-    
+	},[tokenStorage])    
 	    
-	    const loginWithToken = async () => {
+	const loginWithToken = async () => {
 		let user;
 		try {
 		    const response = await api.get("/users.json");
 		
-		    /* Tarea de backend */
+		    // Backend 
 		    const users: User[] = mapToArray(response.data);
 		
 		    if (tokenStorage) {
@@ -81,21 +80,18 @@ const useAuth = ()  => {
 			setHasUserLoggedIn(false);
 		    }
 		} catch (e) {
-		  // console.log(e);
+		   console.log(e);
 		}
-	    };
+	};
     
-	    const logout = () => {
+	const logout = () => {
 		localStorage.removeItem('user-token')
 		push('/login')
 		setCurrentUser(undefined)
-	    };
+	};
     
-	    const signUp = () => {};
+	return { login, loginWithToken, logout, hasUserLoggedIn }
+}    
     
-	return { login, loginWithToken, logout, signUp, hasUserLoggedIn  }
-    }
-    
-    
-    export { useAuth }
+export { useAuth }
     
