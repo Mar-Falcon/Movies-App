@@ -2,18 +2,18 @@
 import { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { AuthContext } from "../../context/Auth";
-import { mapToArray } from "../../helpers";
 import { User } from "../../types";
 import { api } from "../../utils";
+import { usersApi } from "../../api";
 
 const useAuth = ()  => {
 	
 	const login = async (email: string, password: string) => {
 		try {
-		    const response = await api.get("/users.json");
+		    const { getUsers } = usersApi;
 		
 		    // Backend 
-		    const users: User[] = mapToArray(response.data);
+		    const users: User[] = await getUsers();
 		
 		    const user = users.find(
 			(user) => user.email === email && user.password === password
@@ -45,7 +45,7 @@ const useAuth = ()  => {
     
 	useEffect ( () => {
 	    loginWithToken()
-	},[])
+	},[]);
     
 	const createUserToken = async (user: User): Promise<string | null> => {
 		try {
@@ -64,10 +64,10 @@ const useAuth = ()  => {
 	const loginWithToken = async () => {
 		let user;
 		try {
-		    const response = await api.get("/users.json");
+		    const { getUsers } = usersApi;		    
 		
 		    // Backend 
-		    const users: User[] = mapToArray(response.data);
+		    const users: User[] = await getUsers();
 		
 		    if (tokenStorage) {
 			user = users.find((user) => user.sessionToken === tokenStorage);
