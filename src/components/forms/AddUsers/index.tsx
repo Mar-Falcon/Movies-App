@@ -1,10 +1,11 @@
 import { FC } from "react";
 import { useForm } from "react-hook-form";
-import { useUsers } from "../../../hooks/useUsers";
 import { AddUserType } from "../../../types";
 import { defaultValues } from "./defaultValues";
 import { validationSchema } from "./validationSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useUsers } from "../../../hooks";
+import { Link } from "react-router-dom";
 
 const AddUsers: FC = () => {
 	const { addUser } = useUsers();
@@ -47,11 +48,16 @@ const AddUsers: FC = () => {
 		{formState.errors.password?.message}
 	      </span>
 	    </div>    
-	    <div className="col-12">
-	    <button type="submit" className= "btn btn-primary">Enviar</button>
+	    <div className="d-flex justify-content-center">
+	    	<button type="submit" className= "btn btn-primary m-auto">Create Account</button>
+	    </div>		
+	    <div className="d-flex justify-content-center">
+	    	<Link to="/login" className="">I have an account
+		</Link>
 	    </div>
+
 	  </form>
 	);
-      };
+};
       
-      export { AddUsers };
+export { AddUsers };

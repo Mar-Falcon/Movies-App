@@ -1,9 +1,10 @@
 import { FC } from "react";
+import { LoginUser } from "../../components";
 
 const Login: FC = () => {
 	return (
 		<>
-		<div>Login</div>
+		<LoginUser/>
 		</>
 	);
 };

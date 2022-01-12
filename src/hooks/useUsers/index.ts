@@ -1,17 +1,29 @@
+import { useState } from "react";
 import { usersApi } from "../../api/users";
-import { AddUserType } from "../../types"
+import { AddUserType, User } from "../../types"
 
 const useUsers = () => {
+
+	const [users, setUsers] = useState<User[]>();
+
 	const addUser = async (datos: AddUserType) => {
 		await usersApi.addUser(datos);
-
 	}
 
 	const getUsers = async () => {
-		await usersApi.getUsers();
+		const response = await usersApi.getUsers();
+		setUsers(response);
 	}
-	
-	return { addUser, getUsers};
+
+	const deleteUser = async (id: string) =>{
+		if (window.confirm("are you sure you want to delete this user?")){
+			 await usersApi.deleteUser(id);	
+		}
+	}
+
+
+
+	return { addUser, getUsers, users, deleteUser};
 
 }
 
