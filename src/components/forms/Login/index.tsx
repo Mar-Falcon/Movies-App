@@ -1,34 +1,38 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { FC } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
-import { useUsers } from "../../../hooks";
-import { User } from "../../../types";
-import { defaultValues } from "../AddUsers/defaultValues";
-import { validationSchema } from "../AddUsers/validationSchema";
+import { Link, useHistory } from "react-router-dom";
+import { useAuth } from "../../../hooks";
+import { defaultValues } from "./defaultValues";
+import { validationSchema } from "./validationSchema";
 
 const LoginUser: FC = () => {  
 	
-	const { users } = useUsers();
-	const { handleSubmit, register, formState } = useForm({
+	const { login } = useAuth();
+	const { push } = useHistory();
+	
+	const { handleSubmit, register, formState} = useForm<{ email: string; password: string }>({
 	  defaultValues,
 	  resolver: yupResolver(validationSchema),
-	});
+	});	
       
-	const onSubmit = (data: User) => {
-	  console.log(users);
-	};
+	const onSubmit = async (data: { email: string; password: string }) => {
+		
+		  await login(data.email, data.password);
+		  push("/");		 
+		
+	      };
       
 	return (
 	  <form action="" onSubmit={handleSubmit(onSubmit)} className="container row g-3">	    
 	    <div className="form-group">
 	      <label htmlFor="" className="form-label">E-mail</label>
-	      <input type="email" {...register("email")} className="form-control" />
+	      <input id="email" type="email" {...register("email")} className="form-control" />
 	      <span className="text-white">{formState.errors.email?.message}</span>
 	    </div>      
 	    <div className="form-group">
 	      <label htmlFor="" className="form-label">Password</label>
-	      <input type="password" {...register("password")} className="form-control" />
+	      <input  id="pass" type="password" {...register("password")} className="form-control" />
 	      <span className="text-white">
 		{formState.errors.password?.message}
 	      </span>

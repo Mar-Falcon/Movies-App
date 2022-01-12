@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { Layout, Series } from "../../components";
+import { WithAuth } from "../../hoc";
 
 const SeriesPage: FC = () => {
 	return (
@@ -9,4 +10,4 @@ const SeriesPage: FC = () => {
 	);
 };
 
-export { SeriesPage };
+export default WithAuth(SeriesPage);

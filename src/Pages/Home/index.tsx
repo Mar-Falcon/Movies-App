@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { Cards, Layout } from "../../components";
+import { WithAuth } from "../../hoc";
 
 const Home: FC = () => {
 	return (
@@ -11,4 +12,4 @@ const Home: FC = () => {
 	);
 };
 
-export { Home };
+export default WithAuth(Home);

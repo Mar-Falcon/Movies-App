@@ -3,8 +3,11 @@ import { Link } from "react-router-dom";
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faBars} from "@fortawesome/free-solid-svg-icons";
+import { useAuth } from "../../../../hooks";
 
 const Nav: FC = () => {
+
+	const { logout } = useAuth();
 
 	return (		
 	    <nav className="navbar navbar-expand-lg navbar-light p-3">
@@ -21,7 +24,7 @@ const Nav: FC = () => {
 						<Link to="/" className="nav-link active"> Home </Link>			
 					</li>
 					<li className="nav-item">
-						<Link to="/signUp" className="nav-link active"> SignUp </Link>			
+						<Link to="/signup" className="nav-link active"> SignUp </Link>			
 					</li>
 					<li className="nav-item">
 						<Link to="/movies" className="nav-link active"> Movies </Link>  			
@@ -39,7 +42,7 @@ const Nav: FC = () => {
 						<Link to="/login" className="nav-link active"> Login </Link>  			
 					</li>		        
 				</ul>
-				<button className= "btn"> SignOff </button>
+				<button className= "btn" onClick={logout}> SignOff </button>
 			</div>
 		</div>
 	    </nav>
