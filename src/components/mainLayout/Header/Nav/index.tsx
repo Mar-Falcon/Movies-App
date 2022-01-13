@@ -22,10 +22,7 @@ const Nav: FC = () => {
 				<ul className="navbar-nav ms-auto mb-2 mb-lg-0">
 					<li className="nav-item">
 						<Link to="/" className="nav-link active"> Home </Link>			
-					</li>
-					<li className="nav-item">
-						<Link to="/signup" className="nav-link active"> SignUp </Link>			
-					</li>
+					</li>					
 					<li className="nav-item">
 						<Link to="/movies" className="nav-link active"> Movies </Link>  			
 					</li>
@@ -37,10 +34,7 @@ const Nav: FC = () => {
 					</li>
 					<li className="nav-item">
 						<Link to="/admin" className="nav-link active"> Admin </Link>  			
-					</li>	
-					<li className="nav-item">
-						<Link to="/login" className="nav-link active"> Login </Link>  			
-					</li>		        
+					</li>								        
 				</ul>
 				<button className= "btn" onClick={logout}> SignOff </button>
 			</div>
