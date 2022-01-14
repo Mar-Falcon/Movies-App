@@ -4,16 +4,16 @@ import { User } from "../../types";
 type ContextType={
 	currentUser?: Partial<User> | undefined,
 	setCurrentUser: Dispatch<SetStateAction<Partial<User | undefined>>>,    
-    }
+}
     
-    const AuthContext = createContext <ContextType>({
+const AuthContext = createContext <ContextType>({
 	currentUser: {},
 	setCurrentUser: () => undefined,	
-    });
+});
     
-    const AuthProvider: FC = ({ children }) => {
+const AuthProvider: FC = ({ children }) => {
     
-	const [currentUser, setCurrentUser]= useState<Partial<User> | undefined>({})
+const [currentUser, setCurrentUser]= useState<Partial<User> | undefined>({})
     
 	return (
 	    <>	   
@@ -22,6 +22,6 @@ type ContextType={
 		</AuthContext.Provider>
 	    </>
 	)
-    }
+}
     
-    export  { AuthProvider, AuthContext}
+export  { AuthProvider, AuthContext}
