@@ -5,12 +5,12 @@ import { useItems } from "../../hooks/useItems";
 
 const Admin: FC = () => {
 
-	const { setSearch } = useItems();
+	const { setSearchParams } = useItems();
 
 	return (
 		<>
 		<Layout>
-			<Search handleChange={setSearch}/>
+			<Search handleChange={setSearchParams}/>
 			<Cards/>
 		</Layout>
 		</>

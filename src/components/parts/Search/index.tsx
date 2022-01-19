@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FC} from "react";
 
 type Props = {
-	handleChange: (s: string) => void;
+	handleChange: (searchInput: string) => void;
 };      
 
 const Search: FC<Props> = ({ handleChange })=>{	   	

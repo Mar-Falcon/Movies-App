@@ -1,8 +1,7 @@
 import {  useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { searchMulti } from "../../api";
-import { ApiResponse } from "../../types";
-//import { apiTheMovie } from "../../utils";
+import { ApiResponse, Filter } from "../../types";
 
 const useItems = () => {
 	const params = new URLSearchParams(window.location.search);
@@ -12,19 +11,28 @@ const useItems = () => {
 	const {push} = useHistory();
 
 	const [items, setItems] = useState<ApiResponse>();
+
+	const getSearchMulti = async ({page, search}: Filter) => {
+		let response;		
+		if (search) {
+		  response = await searchMulti.getMoviesFilter({page, search});		  	  
+		} else {
+		  response = await searchMulti.getMoviesRandon({page, search});
+		};
+		return response;		
+	};
 	
-	const setSearch = (s: string) => {
-		params.set("search", s);     
+	const setSearchParams = (searchInput: string) => {
+		params.set("search", searchInput);     
 		push(`${window.location.pathname}?${params.toString()}`);
-	      };
+	};
     
 	useEffect(() => {
-		searchMulti({page, search}).then((response) => 
-		setItems(response));	
-		
+		getSearchMulti({page, search}).then((response) => 
+		setItems(response));			
 	}, [page, search]);
 
-	return { page, search, items, setItems, setSearch};
+	return { page, search, items, setItems, setSearchParams, getSearchMulti};
 }
 
 export { useItems };

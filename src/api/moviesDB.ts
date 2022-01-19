@@ -2,18 +2,18 @@ import { ApiResponse } from "../types";
 import { Filter } from "../types";
 import { apiTheMovie } from "../utils";
 
-const searchMulti = async ({page, search}: Filter): Promise<ApiResponse> => {
-	let response;
-	if (search) {
-	  response = await apiTheMovie.get<ApiResponse>(
-	    `/search/multi?query=${search}&page=${page}`
-	  );
-	} else {
-	  response = await apiTheMovie.get<ApiResponse>(
-	    `/movie/top_rated?page=${page}`
-	  );
-	}
+const getMoviesFilter = async ({page, search}: Filter): Promise<ApiResponse> => {
+	const response = await apiTheMovie.get<ApiResponse>(
+		`/search/multi?query=${search}&page=${page}`
+	);
 	return response.data;
 };
+
+const getMoviesRandon = async ({page}: Filter): Promise<ApiResponse> =>{
+	const response = await apiTheMovie.get<ApiResponse>(
+		`/movie/top_rated?page=${page}`
+	);
+	return response.data;
+}
       
-export {  searchMulti }
+export const searchMulti = { getMoviesFilter, getMoviesRandon }
