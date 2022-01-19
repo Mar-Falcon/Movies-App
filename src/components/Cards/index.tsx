@@ -1,9 +1,17 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react';
+import { searchMulti } from '../../api';
+
 import { useItems } from '../../hooks/useItems';
 import { Card } from '../Card'
 
 const Cards: FC = () => {
-	const { items } = useItems();
+
+	const { items, page, search } = useItems();	
+	
+	useEffect(() => {
+		searchMulti({page, search});						
+	}, [page, search,]);	
+
 	return (		
 		<div className="container d-flex justify-content-center align-items-center h-100">
 			<div className="row">
