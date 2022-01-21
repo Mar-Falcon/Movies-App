@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { useItems } from "../../../hooks/useItems";
+import { useItems } from "../../../hooks";
 
 const Pagination: FC = () => {
 

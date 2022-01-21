@@ -9,11 +9,11 @@ const getMoviesFilter = async ({page, search}: Filter): Promise<ApiResponse> => 
 	return response.data;
 };
 
-const getMoviesRandon = async ({page}: Filter): Promise<ApiResponse> =>{
+const getMovies = async ({page}: Filter): Promise<ApiResponse> =>{
 	const response = await apiTheMovie.get<ApiResponse>(
 		`/movie/top_rated?page=${page}`
 	);
 	return response.data;
 }
       
-export const searchMulti = { getMoviesFilter, getMoviesRandon }
+export const searchMulti = { getMoviesFilter, getMovies };

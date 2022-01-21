@@ -1,6 +1,6 @@
 import { FC, useEffect } from 'react';
-import { useItems } from '../../hooks/useItems';
-import { Card } from '../Card'
+import { useItems } from '../../../hooks';
+import { Card } from '../Card';
 
 const Cards: FC = () => {
 

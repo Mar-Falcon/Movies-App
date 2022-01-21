@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
-import { Item } from '../../types/models';
+import { Item } from '../../../types';
 
 const Card: FC <Item> = ({title, poster_path, popularity}) => {	
 	return (		

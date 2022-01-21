@@ -18,7 +18,7 @@ const useItems = () => {
 		if (search) {
 		  response = await searchMulti.getMoviesFilter({page, search});		  	  
 		} else {
-		  response = await searchMulti.getMoviesRandon({page, search});
+		  response = await searchMulti.getMovies({page, search});
 		};
 		return response;		
 	};
