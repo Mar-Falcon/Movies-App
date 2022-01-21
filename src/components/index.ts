@@ -1,9 +1,4 @@
-export { Card } from "./Card";
-export { Cards } from "./Cards";
-export { AddUsers} from "./forms";
-export { UsersTable } from "./parts";
+export { Cards, Card, Loading } from "./common";
+export { AddUsers, LoginUser} from "./forms";
 export { Layout} from "./mainLayout";
-export { LoginUser } from "./forms";
-export { Movies } from "./parts";
-export { Series } from "./parts";
-export { Loading } from "./parts";
+export { Search, Movies, Pagination, Series, UsersTable} from "./parts";
