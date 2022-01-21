@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/App.scss"],"names":[],"mappings":"AAAA,KACC,wDAA4E,CAC5E,YAAa","file":"main.a2d39c2b.chunk.css","sourcesContent":["body {\r\n\tbackground: radial-gradient(circle, rgba(4,0,6,1) 0%, rgba(153,9,234,1) 78%);\r\n\theight: 100vh;\r\n};"]}
