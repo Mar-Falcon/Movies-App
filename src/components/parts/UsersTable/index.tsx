@@ -18,20 +18,20 @@ const UsersTable: FC = () => {
 		<table className="table">
 			<thead>
 				<tr className="col">
-					<th scope="col">Name</th>
-					<th scope="col">LastName</th>
-					<th scope="col">Email</th>
-					<th scope="col">Birthdate</th>
+					<th scope="col" className="text-white">Name</th>
+					<th scope="col" className="text-white">LastName</th>
+					<th scope="col" className="text-white">Email</th>
+					<th scope="col" className="text-white">Birthdate</th>
 				</tr>
 			</thead>
 			<tbody>
 				{users?.map((user) => (
 				<tr className="col">					
-					<td>{user.name}</td>
-					<td>{user.lastName}</td>
-					<td>{user.email}</td>
-					<td>{convertDateFormat(user.birthdate)}</td>
-					<td><button className="btn btn-danger" onClick={()=> deleteUser(user.id)}><FontAwesomeIcon icon={faTrashAlt}></FontAwesomeIcon></button></td>
+					<td className="text-light">{user.name}</td>
+					<td className="text-light">{user.lastName}</td>
+					<td className="text-light">{user.email}</td>
+					<td className="text-light">{convertDateFormat(user.birthdate)}</td>
+					<td className="text-light"><button className="btn btn-danger" onClick={()=> deleteUser(user.id)}><FontAwesomeIcon icon={faTrashAlt}></FontAwesomeIcon></button></td>
 				</tr>
 				))}			
 			</tbody>
