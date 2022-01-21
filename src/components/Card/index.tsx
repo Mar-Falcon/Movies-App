@@ -1,18 +1,23 @@
 import React, { FC } from 'react';
+import { useItems } from '../../hooks/useItems';
 
 const Card: FC = () => {
+	const { items } = useItems();
 	return (
 		<div className="card">
-			<img src="" alt="" />
-			<div className="card-body">
-				<h4 className="card-title">My title</h4>
-				<p className="card-text text-secundary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto vel natus quam repellat at commodi fuga aut, dolorum itaque eum eius atque quas veritatis consequatur rem excepturi aliquam ullam! Error.</p>
+			{items?.results.map ((item)=>  { return (
+			<>{console.log(item)}
+				<img src="" alt="" />
+				<div className="card-body">
+				<h4 className="card-title">My title {item.title}</h4>
+				<p className="card-text text-secundary"> {item.release_date}</p>
 				<a href="#!" className="btn btn-outline-secondary">
 					Go to this website
 				</a>
-
-			</div>
-		</div>
+				</div>
+			</>
+			)})}
+		</div>		
 	)
 }
 
