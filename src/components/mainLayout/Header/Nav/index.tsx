@@ -2,7 +2,7 @@ import { FC } from "react";
 import { Link } from "react-router-dom";
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faBars} from "@fortawesome/free-solid-svg-icons";
+import {faBars, faPowerOff} from "@fortawesome/free-solid-svg-icons";
 import { useAuth } from "../../../../hooks";
 
 const Nav: FC = () => {
@@ -21,28 +21,22 @@ const Nav: FC = () => {
 		    	<div className="navbar-collapse collapse" id="navbarSupportedContent">
 				<ul className="navbar-nav ms-auto mb-2 mb-lg-0">
 					<li className="nav-item">
-						<Link to="/" className="nav-link active"> Home </Link>			
+						<Link to="/" className="nav-link active text-light"> Home </Link>			
+					</li>					
+					<li className="nav-item">
+						<Link to="/movies" className="nav-link active text-white"> Movies </Link>  			
 					</li>
 					<li className="nav-item">
-						<Link to="/signup" className="nav-link active"> SignUp </Link>			
-					</li>
-					<li className="nav-item">
-						<Link to="/movies" className="nav-link active"> Movies </Link>  			
-					</li>
-					<li className="nav-item">
-						<Link to="/series" className="nav-link active"> Series </Link>  			
+						<Link to="/series" className="nav-link active text-white"> Series </Link>  			
 					</li>	
 					<li className="nav-item">
-						<Link to="/users" className="nav-link active"> Users </Link>  			
+						<Link to="/users" className="nav-link active text-white"> Users </Link>  			
 					</li>
 					<li className="nav-item">
-						<Link to="/admin" className="nav-link active"> Admin </Link>  			
-					</li>	
-					<li className="nav-item">
-						<Link to="/login" className="nav-link active"> Login </Link>  			
-					</li>		        
+						<Link to="/admin" className="nav-link active text-white"> Admin </Link>  			
+					</li>								        
 				</ul>
-				<button className= "btn" onClick={logout}> SignOff </button>
+				<button className= "btn" onClick={logout}><FontAwesomeIcon icon={faPowerOff}></FontAwesomeIcon></button>
 			</div>
 		</div>
 	    </nav>

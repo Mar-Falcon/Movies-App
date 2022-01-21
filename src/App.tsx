@@ -12,6 +12,7 @@ import Home from "./Pages/Home";
 import MoviesPage from "./Pages/MoviesPage";
 import SeriesPage from "./Pages/SeriesPage";
 import { AuthProvider } from "./context/Auth";
+import Detail from "./Pages/Detail";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         <Switch>        
           <Route path="/signup" component={SignUp}/> 
           <Route path="/admin" component={Admin}/> 
+          <Route path="/detail" component={Detail}/>
           <Route path="/movies" component={MoviesPage}/> 
           <Route path="/series" component={SeriesPage}/> 
           <Route path="/login" component={Login}/> 

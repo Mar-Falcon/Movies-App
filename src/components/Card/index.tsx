@@ -1,24 +1,18 @@
-import React, { FC } from 'react';
-import { useItems } from '../../hooks/useItems';
+import { FC } from 'react';
+import { Link } from 'react-router-dom';
+import { Item } from '../../types/models';
 
-const Card: FC = () => {
-	const { items } = useItems();
-	return (
-		<div className="card">
-			{items?.results.map ((item)=>  { return (
-			<>{console.log(item)}
-				<img src="" alt="" />
-				<div className="card-body">
-				<h4 className="card-title">My title {item.title}</h4>
-				<p className="card-text text-secundary"> {item.release_date}</p>
-				<a href="#!" className="btn btn-outline-secondary">
-					Go to this website
-				</a>
-				</div>
-			</>
-			)})}
-		</div>		
+const Card: FC <Item> = ({title, poster_path, popularity}) => {	
+	return (		
+		<div className="card text-center bg-transparent">		
+			<img src={`http://image.tmdb.org/t/p/w500${poster_path}`} alt={title} className='img-responsive' />
+			<div className="card-body text-white">
+				<h4 className="card-title">{title}</h4>
+				<p className="card-text text-secundary">{popularity}</p>				
+				<Link to="/detail" className="btn btn-outline-secondary"> Details </Link> 
+			</div>
+		</div>				
 	)
 }
 
-export {Card};
+export { Card };
