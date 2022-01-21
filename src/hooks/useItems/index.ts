@@ -11,6 +11,7 @@ const useItems = () => {
 	const {push} = useHistory();
 
 	const [items, setItems] = useState<ApiResponse>();
+	const [lastPage, setLastPage] = useState(1)
 
 	const getSearchMulti = async ({page, search}: Filter) => {
 		let response;		
@@ -26,13 +27,23 @@ const useItems = () => {
 		params.set("search", searchInput);     
 		push(`${window.location.pathname}?${params.toString()}`);
 	};
+
+	const setPageParams = (newPage: number) => {
+		params.set("page", newPage.toString());
+		push(`${window.location.pathname}?${params.toString()}`);
+	      };
     
 	useEffect(() => {
 		getSearchMulti({page, search}).then((response) => 
 		setItems(response));			
 	}, [page, search]);
 
-	return { page, search, items, setItems, setSearchParams, getSearchMulti};
+	useEffect(() => {
+		getSearchMulti({page, search}).then((response) => 
+		setLastPage(response.total_pages)); 		
+	}, [page, search]);
+
+	return { page, search, items, setItems, setSearchParams, setPageParams, getSearchMulti, lastPage};
 }
 
 export { useItems };

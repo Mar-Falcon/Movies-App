@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Cards, Layout, Search } from "../../components";
+import { Cards, Layout, Pagination, Search } from "../../components";
 import { WithAuth } from "../../hoc";
 import { useItems } from "../../hooks/useItems";
 
@@ -12,6 +12,7 @@ const Admin: FC = () => {
 		<Layout>
 			<Search handleChange={setSearchParams}/>
 			<Cards/>
+			<Pagination/>
 		</Layout>
 		</>
 	);
