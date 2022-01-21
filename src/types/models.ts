@@ -36,14 +36,6 @@ export type ApiResponse = {
 	total_results: number,
 };
 
-export type TotalResults ={
-	page?: number, 
-	results: Item[],
-	total_pages: number,
-	total_results:number,
-    
-}
-
 export type Filter = {
 	page: number,
 	search: string | undefined
