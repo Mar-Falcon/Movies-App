@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { useItems } from "../../../hooks";
-const Detail: FC = () => {
+
+const DetailCard: FC = () => {
 
 	const { items } = useItems();
 	return (		
@@ -29,4 +30,4 @@ const Detail: FC = () => {
 	);
 };
 
-export { Detail };
+export { DetailCard };

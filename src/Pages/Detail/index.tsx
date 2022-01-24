@@ -1,14 +1,14 @@
 import { FC } from "react";
-import { Detail, Layout } from "../../components";
+import { DetailCard, Layout } from "../../components";
 import { WithAuth } from "../../hoc";
 
-const DetailPage: FC = () => {
+const Detail: FC = () => {
 	
 	return (
 		<Layout>
-			<Detail/>
+			<DetailCard/>
 		</Layout>
 	);
 };
 
-export default WithAuth(DetailPage);
+export default WithAuth(Detail);
