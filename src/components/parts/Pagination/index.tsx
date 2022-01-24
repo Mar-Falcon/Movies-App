@@ -9,14 +9,14 @@ const Pagination: FC = () => {
 	
 	const firtsPage = () =>{
 		setPageParams (1);					
-		activeButton = false;
-					
+		activeButton = false;						
 	}
 	
-	const prevPage = () => {
-		setPageParams (page - 1);
-		if (page > 1){				
+	const prevPage = () => {		
+		if (page <= 1){				
 			activeButton = false;
+		}else{
+			setPageParams (page - 1);
 		}
 	}
 
