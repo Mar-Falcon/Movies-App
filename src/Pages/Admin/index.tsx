@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Cards, Layout, Pagination, Search } from "../../components";
 import { WithAuth } from "../../hoc";
-import { useItems } from "../../hooks/useItems";
+import { useItems } from "../../hooks";
 
 const Admin: FC = () => {
 
