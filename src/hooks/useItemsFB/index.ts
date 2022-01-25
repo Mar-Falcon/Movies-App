@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { moviesFB } from "../../api/moviesFireBase";
-import { Item } from "../../types";
+import { ItemFB } from "../../types";
 
 const useItemsFB = () => {
 
-	const [itemsFB, setItemsFB] = useState<Item[]>();
+	const [itemsFB, setItemsFB] = useState<ItemFB[]>();
 
-	const addItemsFB = async (datos: Item) => {
+	const addItemsFB = async (datos: ItemFB) => {
 		await moviesFB.addMovies(datos);
 	}
 

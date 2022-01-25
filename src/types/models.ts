@@ -40,6 +40,13 @@ export type Filter = {
 	page: number,
 	search: string | undefined
 }
+
+export type ItemFB = {
+	title: string;
+	poster_path?: string;
+	popularity?: number;
+	id: number;
+}
       
 
       

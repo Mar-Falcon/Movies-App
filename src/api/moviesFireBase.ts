@@ -1,5 +1,5 @@
 import { mapToArray } from "../helpers";
-import { Item } from "../types";
+import { Item, ItemFB } from "../types";
 import { api } from "../utils";
 
 const getMovies = async (): Promise<Item[]> => {
@@ -7,7 +7,7 @@ const getMovies = async (): Promise<Item[]> => {
 	return mapToArray(response.data);
 };
       
-const addMovies= async (payload: Item) => {
+const addMovies= async (payload: ItemFB) => {
 	await api.post("/movies.json", payload);
 };
       
