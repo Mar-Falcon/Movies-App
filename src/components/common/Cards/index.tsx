@@ -16,7 +16,7 @@ const Cards: FC = () => {
 			<div className="row">
 			{items?.results.map ((item)=>  { return (
 				<div className="col-md-3" key={item.id}>
-					<Card poster_path={item.poster_path} title={item.title} popularity={item.popularity} id={item.id} idDB={item.idDB} vote_average={item.vote_average} />
+					<Card poster_path={item.poster_path} title={item.title} popularity={item.popularity} id={item.id} idDB={item.idDB} vote_average={item.vote_average} overview={item.overview} release_date={item.release_date} original_language={item.original_language} />
 				</div>)})}			
 			</div>			
 		</div>

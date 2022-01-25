@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import { useItemsFB } from '../../../hooks/useItemsFB';
 import { Item } from '../../../types';
 
-const Card: FC <Item> = ({title, poster_path, popularity, id}) => {
+const Card: FC <Item> = ({title, poster_path, popularity, id, overview, original_language, release_date}) => {
 	
-	const item = {title, poster_path, popularity, id }
+	const item = {title, poster_path, popularity, id, overview, original_language, release_date }
 
 	const { addItemsFB } = useItemsFB();	
 
