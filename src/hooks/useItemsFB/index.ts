@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { moviesFB } from "../../api/moviesFireBase";
-import { ItemFB } from "../../types";
+import { Item } from "../../types";
 
 const useItemsFB = () => {
 
-	const [itemsFB, setItemsFB] = useState<ItemFB[]>();
+	const [itemsFB, setItemsFB] = useState<Item[]>();
 
-	const addItemsFB = async (datos: ItemFB) => {
+	const addItemsFB = async (datos: Item) => {
 		await moviesFB.addMovies(datos);
 	}
 
@@ -15,9 +15,9 @@ const useItemsFB = () => {
 		setItemsFB(response);
 	}
 
-	const deleteMoviesFB = async (id: string) =>{
-		if (window.confirm("are you sure you want to delete this user?")){
-			 await moviesFB.deleteMovies(id);	
+	const deleteMoviesFB = async (idFB: string | undefined) =>{
+		if (window.confirm("Are you sure you want to delete this movie?")){
+			 await moviesFB.deleteMovies(idFB);	
 		}
 	}
 

@@ -18,7 +18,7 @@ export type Item = {
 	release_date?: string;
 	genre_ids?: number[];
 	id: number;
-	idDB?: string;
+	idFB?: string | undefined;
 	original_title?: string;
 	original_language?: string;
 	title: string;
@@ -41,15 +41,6 @@ export type Filter = {
 	search: string | undefined
 }
 
-export type ItemFB = {
-	title: string;
-	poster_path?: string;
-	popularity?: number;
-	id: number;
-	overview?: string;
-	original_language?: string;
-	release_date?: string;
-}
       
 
       

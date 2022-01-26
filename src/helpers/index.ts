@@ -1,2 +1,2 @@
-export { mapToArray } from "./mapToArray";
+export { mapToArray, mapToArrayFB } from "./mapToArray";
 export { convertDateFormat } from "./convertDateFormat";
