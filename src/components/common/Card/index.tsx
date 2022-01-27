@@ -10,7 +10,7 @@ const Card: FC <Item> = ({title, poster_path, popularity, id, overview, original
 	const { addItemsFB, deleteMoviesFB} = useItemsFB();	
 
 	return (
-		<Link to="/detail" className="nav-link">		
+		<Link to={`/detail/${item.idFB}`}className="nav-link">		
 			<div className="card text-center bg-transparent">		
 				<img src={`http://image.tmdb.org/t/p/w500${poster_path}`} alt={title} className='img-responsive' />
 				<div className="card-body text-white">

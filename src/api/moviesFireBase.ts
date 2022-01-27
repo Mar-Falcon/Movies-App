@@ -14,5 +14,10 @@ const addMovies= async (payload: Item) => {
 const deleteMovies = async (idFB: string | undefined) => {
 	await api.delete(`/movies/${idFB}.json`);
 }
+
+const getMovieIdFB = async (idFB: string) => {
+	const response = await api.get(`/movies/${idFB}.json`);
+	return response;
+}
       
-export const moviesFB = { getMovies, addMovies, deleteMovies };
+export const moviesFB = { getMovies, addMovies, deleteMovies, getMovieIdFB };
