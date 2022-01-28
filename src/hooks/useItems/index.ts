@@ -11,7 +11,7 @@ const useItems = () => {
 	const {push} = useHistory();
 
 	const [items, setItems] = useState<ApiResponse>();
-	const [lastPage, setLastPage] = useState(1)
+	const [lastPage, setLastPage] = useState(1);	
 
 	const getSearchMulti = async ({page, search}: Filter) => {
 		let response;		
@@ -32,6 +32,11 @@ const useItems = () => {
 		params.set("page", newPage.toString());
 		push(`${window.location.pathname}?${params.toString()}`);
 	      };
+
+	const getMovieTrailer = async (id: number | undefined) => {
+		const response = await searchMulti.getVideo(id);
+		return response;
+	}
     
 	useEffect(() => {
 		getSearchMulti({page, search}).then((response) => 
@@ -43,7 +48,7 @@ const useItems = () => {
 		setLastPage(response.total_pages)); 		
 	}, [page, search]);
 
-	return { page, search, items, setItems, setSearchParams, setPageParams, getSearchMulti, lastPage};
+	return { page, search, items, setItems, setSearchParams, setPageParams, getSearchMulti, lastPage, getMovieTrailer };
 }
 
 export { useItems };
