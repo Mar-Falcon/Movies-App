@@ -6,9 +6,7 @@ import { User } from "../../types";
 import { api } from "../../utils";
 import { usersApi } from "../../api";
 
-const useAuth = ()  => {
-
-	//const [hasAdminLoggedIn, setHasAdminLoggedIn] = useState<boolean>();
+const useAuth = ()  => {	
 	
 	const login = async (email: string, password: string) => {
 		try {
@@ -95,27 +93,7 @@ const useAuth = ()  => {
 		} catch (e) {
 		   console.log(e);
 		}
-	};
-
-	/*const loginAdmin = async () =>{		
-		try {
-		    const { getUsers } = usersApi;
-		    // Backend 
-		    const users: User[] = await getUsers();
-		
-		    const admin = users.find((user) => user.role === "admin");
-		    		
-		    if (admin) {			
-			setHasAdminLoggedIn(true);
-		    } else {
-			setHasAdminLoggedIn(false);
-		    }
-
-		} catch (e) {
-			console.log(e);
-		}
-
-	}*/
+	};	
     
 	const logout = () => {
 		localStorage.removeItem('user-token')
