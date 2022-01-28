@@ -21,8 +21,6 @@ const useUsers = () => {
 		}
 	}
 
-
-
 	return { addUser, getUsers, users, deleteUser};
 
 }
