@@ -17,7 +17,7 @@ const LoginUser: FC = () => {
 	});	
       
 	const onSubmit = async (data: { email: string; password: string }) => {		
-		  await login(data.email, data.password);
+		  await login(data.email, data.password);		 
 		  push("/");		
 	};
       
