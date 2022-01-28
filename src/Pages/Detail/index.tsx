@@ -13,7 +13,7 @@ const Detail: FC = () => {
 				</div>
 				<div className="container d-flex justify-content-center align-items-center">
 					<div className="w-100">
-						<p className="text-white mt-5">Also...</p>
+						<h3 className="text-white mt-5">Also...</h3>
 						<Movies/>
 					</div>
 				</div>

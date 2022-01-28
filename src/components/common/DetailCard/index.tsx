@@ -19,7 +19,7 @@ const DetailCard: FC = () => {
 	
         useEffect(() => {
                getDetail(id);  	       
-        },[]);		
+        },[id]);		
 	
 	useEffect(()=>{
 		getMovieTrailer(movieDetail?.id).then((results) => setTrailers(results))				
