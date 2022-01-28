@@ -15,5 +15,12 @@ const getMovies = async ({page}: Filter): Promise<ApiResponse> =>{
 	);
 	return response.data;
 }
+
+const getVideo = async (id: number | undefined) => {
+	const response = await apiTheMovie.get(
+		`/movie/${id}/videos`
+	);
+	return response.data.results;
+}
       
-export const searchMulti = { getMoviesFilter, getMovies };
+export const searchMulti = { getMoviesFilter, getMovies, getVideo };
