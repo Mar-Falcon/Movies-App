@@ -1,14 +1,14 @@
 import { FC } from "react";
-import { Cards, Layout } from "../../components";
+import { Layout, Movies } from "../../components";
 import { WithAuth } from "../../hoc";
 
-const Home: FC = () => {
-	return (
-		<>
+const Home: FC = () => {	
+
+	return (		
 		<Layout>
-			<Cards/>
+			<Movies/>
 		</Layout>
-		</>
+		
 	);
 };
 

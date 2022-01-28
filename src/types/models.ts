@@ -18,7 +18,7 @@ export type Item = {
 	release_date?: string;
 	genre_ids?: number[];
 	id: number;
-	idDB: string;
+	idFB?: string | undefined;
 	original_title?: string;
 	original_language?: string;
 	title: string;
@@ -26,7 +26,7 @@ export type Item = {
 	popularity?: number;
 	vote_count?: number;
 	video?: boolean;
-	vote_average: number;
+	vote_average?: number;
 };
 
 export type ApiResponse = {
@@ -40,6 +40,7 @@ export type Filter = {
 	page: number,
 	search: string | undefined
 }
+
       
 
       
