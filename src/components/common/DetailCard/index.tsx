@@ -18,7 +18,8 @@ const DetailCard: FC = () => {
 	const { id } = useParams<ParamsType>();
 	
         useEffect(() => {
-               getDetail(id);  	       
+               getDetail(id); 
+	       console.log(movieDetail) 	       
         },[id]);		
 	
 	useEffect(()=>{
@@ -31,11 +32,11 @@ const DetailCard: FC = () => {
 						<div className="card-body text-white d-flex">
 							<div className="row">
 								<div className="col-md-7">
-									<h1 className="card-title">{movieDetail?.title}</h1>
+									<h1 className="card-title">{movieDetail?.title || movieDetail?.name}</h1>
 									<p className="overvie mt-5">{movieDetail?.overview}</p>
 									<ul className="mt-4">
 										<li> original language: {movieDetail?.original_language}</li>
-										<li> Release date: {movieDetail?.release_date}</li>
+										<li> Release date: {movieDetail?.release_date || movieDetail?.first_air_date}</li>
 									</ul>
 									<p className="card-text text-secundary">{movieDetail?.popularity}</p>
 									<div className="trailers mt-6"> 
