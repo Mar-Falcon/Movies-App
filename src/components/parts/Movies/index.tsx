@@ -4,11 +4,10 @@ import { Card } from "../../common";
 
 const Movies: FC = () => {
 	
-	const {getMoviesFB, itemsFB} = useItemsFB();
+	const { itemsFB, filterMovies} = useItemsFB();
 
         useEffect(() => {
-	       getMoviesFB();	
-	       console.log(itemsFB);								
+	       filterMovies();							
         }, []);
 
 	return (	
