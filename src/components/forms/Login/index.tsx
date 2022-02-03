@@ -16,12 +16,10 @@ const LoginUser: FC = () => {
 	  resolver: yupResolver(validationSchema),
 	});	
       
-	const onSubmit = async (data: { email: string; password: string }) => {
-		
-		  await login(data.email, data.password);
-		  push("/");		 
-		
-	      };
+	const onSubmit = async (data: { email: string; password: string }) => {		
+		  await login(data.email, data.password);		 
+		  push("/");		
+	};
       
 	return (
 	  <form action="" onSubmit={handleSubmit(onSubmit)} className="container row g-3">	    

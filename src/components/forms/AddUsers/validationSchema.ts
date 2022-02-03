@@ -14,4 +14,5 @@ export const validationSchema = yup.object().shape({
   name: yup.string().required(FORM_VALIDATIONS.REQUIRED),
   lastName: yup.string().required(FORM_VALIDATIONS.REQUIRED),
   birthdate: yup.date().required(FORM_VALIDATIONS.REQUIRED),
+  role: yup.string(),
 });

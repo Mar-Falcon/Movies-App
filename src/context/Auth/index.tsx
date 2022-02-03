@@ -13,7 +13,7 @@ const AuthContext = createContext <ContextType>({
     
 const AuthProvider: FC = ({ children }) => {
     
-const [currentUser, setCurrentUser]= useState<Partial<User> | undefined>({})
+	const [currentUser, setCurrentUser]= useState<Partial<User> | undefined>({})
     
 	return (
 	    <>	   

@@ -6,7 +6,7 @@ import { User } from "../../types";
 import { api } from "../../utils";
 import { usersApi } from "../../api";
 
-const useAuth = ()  => {
+const useAuth = ()  => {	
 	
 	const login = async (email: string, password: string) => {
 		try {
@@ -17,7 +17,7 @@ const useAuth = ()  => {
 		
 		    const user = users.find(
 			(user) => user.email === email && user.password === password
-		    );
+		    );		    
 		
 		    if (user) {
 			// Token
@@ -30,17 +30,27 @@ const useAuth = ()  => {
 		    } else {
 			throw new Error("El usuario no existe");
 		    }
+
+		    const admin = users.find((user) => user.role === "admin");
+		    		
+		    if (admin) {			
+			setCurrentUser(admin);
+		    } else {
+			setCurrentUser(user);
+		    }
+		    
 		    // /Backend 
 		}catch (e) {
 		    console.log(e);
 		}
 	};
 	
-	const { setCurrentUser } = useContext(AuthContext);
+	const { currentUser, setCurrentUser } = useContext(AuthContext);
 	const [ tokenStorage, setTokenStorage] = useState <string | undefined>(
 	    localStorage.getItem('user-token') || undefined)
     
-	const [hasUserLoggedIn, setHasUserLoggedIn] = useState<boolean>();
+	const [hasUserLoggedIn, setHasUserLoggedIn] = useState<boolean>();	
+
 	const { push }= useHistory();
     
 	useEffect ( () => {
@@ -78,11 +88,12 @@ const useAuth = ()  => {
 			setHasUserLoggedIn(true);
 		    } else {
 			setHasUserLoggedIn(false);
-		    }
+		    }		    
+		    
 		} catch (e) {
 		   console.log(e);
 		}
-	};
+	};	
     
 	const logout = () => {
 		localStorage.removeItem('user-token')
@@ -90,7 +101,7 @@ const useAuth = ()  => {
 		setCurrentUser(undefined)
 	};
     
-	return { login, loginWithToken, logout, hasUserLoggedIn }
+	return { login, loginWithToken, logout, hasUserLoggedIn, currentUser }
 }    
     
 export { useAuth }
