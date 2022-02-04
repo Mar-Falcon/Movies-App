@@ -5,4 +5,5 @@ export const defaultValues = {
 	password: "",
 	birthdate: "",	
 	role:"user",
+	viewed: [""],
 };

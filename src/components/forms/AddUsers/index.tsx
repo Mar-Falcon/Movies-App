@@ -57,7 +57,11 @@ const AddUsers: FC = () => {
 		<div className="form-group">
 			<label htmlFor="" hidden>Role</label>
 			<input type="text" {...register("role")} hidden/>
-		</div>   
+		</div> 
+		<div className="form-group">
+          		<label htmlFor="" hidden>Viewed</label>
+          		<input type="text" {...register("viewed")} hidden />
+        	</div>  
 		<div className="d-flex justify-content-center">
 			<button type="submit" className= "btn btn-primary m-auto">Create Account</button>
 		</div>		

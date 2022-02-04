@@ -8,16 +8,17 @@ import { usersApi } from "../../api";
 
 const useAuth = ()  => {	
 	
-	const login = async (email: string, password: string) => {
+	const login = async (email: string, password: string) => {		
+
 		try {
-		    const { getUsers } = usersApi;
+		    const { getUsers } = usersApi;		   
 		
 		    // Backend 
 		    const users: User[] = await getUsers();
 		
 		    const user = users.find(
 			(user) => user.email === email && user.password === password
-		    );		    
+		    ); 		   
 		
 		    if (user) {
 			// Token
@@ -100,7 +101,7 @@ const useAuth = ()  => {
 		push('/login')
 		setCurrentUser(undefined)
 	};
-    
+   
 	return { login, loginWithToken, logout, hasUserLoggedIn, currentUser }
 }    
     
