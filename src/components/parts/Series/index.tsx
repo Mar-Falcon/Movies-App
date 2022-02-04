@@ -1,15 +1,13 @@
 import { FC, useEffect } from "react";
-import { Card } from "../..";
 import { useItemsFB } from "../../../hooks";
+import { Card } from "../..";
 
 const Series: FC = () => {
 
 	const {itemsFB, filterSeries} = useItemsFB();
 
 	useEffect(() => {
-
-	       filterSeries(); 	       
-	       								
+	       filterSeries();        								
         }, []);
 
 	return (	

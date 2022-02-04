@@ -33,12 +33,13 @@ const DetailCard: FC = () => {
 							<div className="row">
 								<div className="col-md-7">
 									<h1 className="card-title">{movieDetail?.title || movieDetail?.name}</h1>
+									<h4 className="card-title">{movieDetail?.original_title}</h4>
 									<p className="overvie mt-5">{movieDetail?.overview}</p>
 									<ul className="mt-4">
 										<li> original language: {movieDetail?.original_language}</li>
 										<li> Release date: {movieDetail?.release_date || movieDetail?.first_air_date}</li>
 									</ul>
-									<p className="card-text text-secundary">{movieDetail?.popularity}</p>
+									<p className="card-text text-secundary">{movieDetail?.vote_average}</p>
 									<div className="trailers mt-6"> 
 										<h3 className="text-white">Trailers</h3>     
                     								{trailers?.map((video) => (

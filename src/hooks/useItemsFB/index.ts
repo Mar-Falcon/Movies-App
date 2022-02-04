@@ -8,13 +8,12 @@ const useItemsFB = () => {
 
 	const [itemsFB, setItemsFB] = useState<Item[]>();
 	const [movieDetail, setMovieDetail] = useState<Item>();	
-	const [hideButton, setHideButton] = useState<boolean>();
+	const [movieViewed, setMovieViewed] = useState<string| undefined>()	
 	
 	const { currentUser } = useAuth();
 	
 	const addItemsFB = async (datos: Item) => {		
 		await moviesFB.addMovies(datos);
-		setHideButton(false);		
 	}
 
 	const getMoviesFB = async () => {
@@ -40,8 +39,7 @@ const useItemsFB = () => {
 	const deleteMoviesFB = async (idFB: string | undefined) =>{
 		if (window.confirm("Are you sure you want to delete this movie?")){
 			 await moviesFB.deleteMovies(idFB);	
-		}
-		setHideButton(true);
+		};
 	}
 
 	const getDetail = async (idFB: string) => {
@@ -51,7 +49,8 @@ const useItemsFB = () => {
 	
 	const addMovieUser = async (movie: string | undefined) => {
 		const viewedItems = currentUser?.viewed || [""]; 
-		await api.patch(`/users/${currentUser?.id}.json`, {viewed: [...viewedItems, movie]} );		
+		await api.patch(`/users/${currentUser?.id}.json`, {viewed: [...viewedItems, movie]} );	
+		setMovieViewed(movie);	
 	};
 	
 	const removeMovieUser = async (movie: string | undefined) => {
@@ -59,7 +58,7 @@ const useItemsFB = () => {
 	      await api.patch(`users/${currentUser?.id}.json`, {viewed: viewedItems, })
 	}
 	
-	return { addItemsFB, getMoviesFB, itemsFB, deleteMoviesFB, getDetail, movieDetail, setMovieDetail, filterMovies, filterSeries, hideButton, setHideButton, addMovieUser, removeMovieUser};
+	return { addItemsFB, getMoviesFB, itemsFB, deleteMoviesFB, getDetail, movieDetail, setMovieDetail, filterMovies, filterSeries, addMovieUser, removeMovieUser, movieViewed};
 
 }
 
