@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { FC, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth, useItemsFB } from '../../../hooks';
@@ -51,8 +53,8 @@ const Card: FC <Props> = ({item}) => {
 				<button className="btn btn-outline-danger" onClick={()=> deleteMoviesFB(item.idFB)} hidden={!hideButton} > Delete </button> 
 				</>)}								
 			{currentUser?.role === 'user' && (<> 
-				<button className="btn btn-outline-warning" onClick={()=> addMovieUser(item.idFB)} hidden={hideButton} > NoViewed </button>
-				<button className="btn btn-outline-warning" onClick={()=> removeMovieUser(item.idFB)} hidden={!hideButton2} > Viewed </button>
+				<button className="btn btn-outline-warning" onClick={()=> addMovieUser(item.idFB)} hidden={hideButton} ><FontAwesomeIcon icon={faEyeSlash}></FontAwesomeIcon> </button>
+				<button className="btn btn-outline-warning" onClick={()=> removeMovieUser(item.idFB)} hidden={!hideButton2} ><FontAwesomeIcon icon={faEye}></FontAwesomeIcon> </button>
 			</>)}
 			</div>		
 		</div>
