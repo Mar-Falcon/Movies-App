@@ -7,7 +7,7 @@ import { useAuth } from "../../../../hooks";
 
 const Nav: FC = () => {
 
-	const { logout } = useAuth();
+	const { logout, currentUser } = useAuth();
 
 	return (		
 	    <nav className="navbar navbar-expand-lg navbar-light p-3">
@@ -28,13 +28,15 @@ const Nav: FC = () => {
 					</li>
 					<li className="nav-item">
 						<Link to="/series" className="nav-link active text-white"> Series </Link>  			
-					</li>	
+					</li>
+					{currentUser?.role === 'admin' && (<>
 					<li className="nav-item">
 						<Link to="/users" className="nav-link active text-white"> Users </Link>  			
 					</li>
 					<li className="nav-item">
 						<Link to="/admin" className="nav-link active text-white"> Admin </Link>  			
-					</li>								        
+					</li>	
+					</>)}							        
 				</ul>
 				<button className= "btn" onClick={logout}><FontAwesomeIcon icon={faPowerOff}></FontAwesomeIcon></button>
 			</div>
