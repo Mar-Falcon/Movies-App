@@ -1,8 +1,7 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
-import { useAuth, useItemsFB } from '../../../hooks';
+import { useItemsFB } from '../../../hooks';
 import { Item } from '../../../types';
-import { api } from '../../../utils';
 
 type Props = {
 	item: Item
@@ -10,20 +9,7 @@ type Props = {
 
 const Card: FC <Props> = ({item}) => {	
 	
-	const { addItemsFB, deleteMoviesFB, hideButton } = useItemsFB();
-
-	const { currentUser } = useAuth();	
-
-	const addMovieUser = async (movie: Item) => {
-		const prevViewedItems = currentUser?.viewed || []; 
-		await api.patch(`/users/${currentUser?.id}.json`, {viewed: [...prevViewedItems, movie]} );
-		console.log(currentUser)
-	};
-	
-	/*const removeMovieUser = async (movie: string | undefined) => {
-		const updateViewedItems =  currentUser?.viewed?.filter((i) => i !== movie)
-	      await api.patch(`users/${currentUser?.id}.json`, {viewed: updateViewedItems, })
-	}*/
+	const { addItemsFB, deleteMoviesFB, hideButton, addMovieUser, removeMovieUser } = useItemsFB();	
 
 	return (
 		<Link to={`/detail/${item.idFB}`}className="nav-link">		
@@ -34,9 +20,9 @@ const Card: FC <Props> = ({item}) => {
 					<p className="card-text text-secundary">{item.popularity}</p>									
 					<button className="btn btn-outline-secondary" onClick={()=> addItemsFB(item)} hidden={hideButton}> Save </button>
 					<button className="btn btn-outline-danger" onClick={()=> deleteMoviesFB(item.idFB)} hidden={hideButton} > Delete </button>
-					<button className="btn btn-outline" onClick={()=> addMovieUser(item)} hidden={hideButton} > Viewed </button>
-					{//<button className="btn btn-outline" onClick={()=> removeMovieUser(item.idFB)} hidden={hideButton} > NoViewed </button>
-					}										 
+					<button className="btn btn-outline" onClick={()=> addMovieUser(item.idFB)} hidden={hideButton} > Viewed </button>
+					<button className="btn btn-outline" onClick={()=> removeMovieUser(item.idFB)} hidden={hideButton} > NoViewed </button>
+															 
 				</div>
 			</div>
 		</Link> 			

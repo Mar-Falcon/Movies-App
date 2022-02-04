@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useAuth } from "..";
 import { moviesFB } from "../../api";
 import { Item } from "../../types";
+import { api } from "../../utils";
 
 const useItemsFB = () => {
 
@@ -46,14 +47,19 @@ const useItemsFB = () => {
 	const getDetail = async (idFB: string) => {
 		const detail = await moviesFB.getMovieIdFB(idFB);
 		setMovieDetail(detail.data);		
+	}	
+	
+	const addMovieUser = async (movie: string | undefined) => {
+		const viewedItems = currentUser?.viewed || [""]; 
+		await api.patch(`/users/${currentUser?.id}.json`, {viewed: [...viewedItems, movie]} );		
+	};
+	
+	const removeMovieUser = async (movie: string | undefined) => {
+		const viewedItems =  currentUser?.viewed?.filter((i) => i !== movie)
+	      await api.patch(`users/${currentUser?.id}.json`, {viewed: viewedItems, })
 	}
 	
-	const isItemViewed = (idFB: string) => {
-		const viewed = currentUser?.viewed?.includes(idFB)
-		return viewed;
-	 }
-	
-	return { addItemsFB, getMoviesFB, itemsFB, deleteMoviesFB, getDetail, movieDetail, setMovieDetail, filterMovies, filterSeries, hideButton, setHideButton, isItemViewed };
+	return { addItemsFB, getMoviesFB, itemsFB, deleteMoviesFB, getDetail, movieDetail, setMovieDetail, filterMovies, filterSeries, hideButton, setHideButton, addMovieUser, removeMovieUser};
 
 }
 
