@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import { FC, useEffect, useState } from 'react';
+import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth, useItemsFB } from '../../../hooks';
 import { Item } from '../../../types';
@@ -11,10 +11,10 @@ type Props = {
 
 const Card: FC <Props> = ({item}) => {	
 	
-	const { addItemsFB, deleteMoviesFB, addMovieUser, removeMovieUser, movieViewed, itemsAddFB } = useItemsFB();	
+	const { addItemsFB, deleteMoviesFB, addMovieUser, removeMovieUser, isMovieViewed,  isMovieInFB } = useItemsFB();	
 
-	const { currentUser } = useAuth();
-	
+	const { currentUser } = useAuth();	
+		
 	return (			
 		<div className="card text-center bg-transparent mb-2">		
 			<Link to={`/detail/${item.idFB}`}className="nav-link">	
@@ -32,15 +32,15 @@ const Card: FC <Props> = ({item}) => {
 			</div>
 			</Link> 
 			<div className="card-footer border-top-0 bg-transparent">
-			{currentUser?.role === 'admin' && item !== itemsAddFB && ( 
-				<button className="btn btn-outline-secondary" onClick={()=> addItemsFB(item)}> Save </button>)}
-			{currentUser?.role === 'admin' && item === itemsAddFB && ( 
-				<button className="btn btn-outline-danger" onClick={()=> deleteMoviesFB(item.idFB)}> Delete </button> 
-				)}								
-			{currentUser?.role === 'user' && item.idFB !== movieViewed && ( 
-				<button className="btn btn-outline-warning" onClick={()=> addMovieUser(item.idFB)}><FontAwesomeIcon icon={faEyeSlash}></FontAwesomeIcon> </button> )}
-			{currentUser?.role === 'user' && item.idFB === movieViewed && (
-				<button className="btn btn-outline-warning" onClick={()=> removeMovieUser(item.idFB)}><FontAwesomeIcon icon={faEye}></FontAwesomeIcon> </button>
+			{currentUser?.role === 'admin' && !isMovieInFB(item.idFB) && ( 
+				<button className="btn btn-outline-secondary" type="submit" onClick={()=> addItemsFB(item)}> Save </button>)}
+			{currentUser?.role === 'admin' && isMovieInFB(item.idFB) &&( 
+				<button className="btn btn-outline-danger" type="submit" onClick={()=> deleteMoviesFB(item.idFB)}> Delete </button> 
+			)}								
+			{currentUser?.role === 'user' && !isMovieViewed(item.idFB) && ( 
+				<button className="btn btn-outline-warning" type="submit" onClick={()=> addMovieUser(item.idFB)}><FontAwesomeIcon icon={faEyeSlash}></FontAwesomeIcon> </button> )}
+			{currentUser?.role === 'user' && isMovieViewed(item.idFB) && (
+				<button className="btn btn-outline-warning" type="submit" onClick={()=> removeMovieUser(item.idFB)}><FontAwesomeIcon icon={faEye}></FontAwesomeIcon> </button>
 			)}
 			</div>		
 		</div>

@@ -101,8 +101,12 @@ const useAuth = ()  => {
 		push('/login')
 		setCurrentUser(undefined)
 	};
+
+	const UpdateUserData = () => {
+		loginWithToken()
+	}
    
-	return { login, loginWithToken, logout, hasUserLoggedIn, currentUser }
+	return { login, loginWithToken, logout, hasUserLoggedIn, currentUser, UpdateUserData}
 }    
     
 export { useAuth }

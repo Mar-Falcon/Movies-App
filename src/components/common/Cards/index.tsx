@@ -10,8 +10,7 @@ const Cards: FC = () => {
 	
 	useEffect(() => {
 		getSearchMulti({page, search});
-		console.log(items)
-								
+										
 	}, [getSearchMulti, page, search]);	
 	
 	return (		

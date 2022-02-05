@@ -7,7 +7,7 @@ export type User = {
 	birthdate: string,
 	sessionToken?: string,
 	role: string,
-	viewed?: string[];
+	viewed?: string[],
 };
       
 export type AddUserType = Omit<User, "id">;
@@ -19,7 +19,7 @@ export type Item = {
 	release_date?: string | undefined,
 	genre_ids?: number[],
 	id: number,
-	idFB?: string | undefined,
+	idFB?: string,
 	original_title?: string,
 	original_language?: string,
 	title: string | undefined,

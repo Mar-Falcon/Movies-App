@@ -18,8 +18,7 @@ const DetailCard: FC = () => {
 	const { id } = useParams<ParamsType>();
 	
         useEffect(() => {
-               getDetail(id); 
-	       console.log(movieDetail) 	       
+               getDetail(id); 	       
         },[id]);		
 	
 	useEffect(()=>{
