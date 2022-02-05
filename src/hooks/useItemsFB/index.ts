@@ -13,7 +13,7 @@ const useItemsFB = () => {
 	
 	const addItemsFB = async (datos: Item) => {		
 		await moviesFB.addMovies(datos);
-		getMoviesFB();		
+		await getMoviesFB();
 	}
 
 	const getMoviesFB = async () => {
@@ -40,7 +40,7 @@ const useItemsFB = () => {
 		if (window.confirm("Are you sure you want to delete this movie?")){
 			 await moviesFB.deleteMovies(idFB);	
 		};
-		getMoviesFB();				
+		await getMoviesFB();						
 	}
 
 	const getDetail = async (idFB: string) => {
@@ -48,9 +48,9 @@ const useItemsFB = () => {
 		setMovieDetail(detail.data);		
 	}
 
-	const isMovieInFB = async (id: string | undefined) => {				
-		const isMovieIn = itemsFB?.find((item) => item.idFB === id);	
-		return isMovieIn;			     
+	const isMovieInFB = (id: number) => {						
+		const isMovieIn = itemsFB?.find((item) => item.id === id);	
+		if(isMovieIn) { return true } 					     
 	}	
 	
 	const addMovieUser = async (movie: string | undefined) => {
@@ -70,7 +70,7 @@ const useItemsFB = () => {
 		return viewed;
 	}
 	
-	return { addItemsFB, getMoviesFB, itemsFB, deleteMoviesFB, getDetail, movieDetail, setMovieDetail, filterMovies, filterSeries, addMovieUser, removeMovieUser, isMovieViewed,  isMovieInFB };
+	return { addItemsFB, getMoviesFB, itemsFB, deleteMoviesFB, getDetail, movieDetail, setMovieDetail, filterMovies, filterSeries, addMovieUser, removeMovieUser, isMovieViewed, isMovieInFB };
 
 }
 
