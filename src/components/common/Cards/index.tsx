@@ -1,18 +1,10 @@
-import { FC, useEffect } from 'react';
-import { useItems, useItemsFB } from '../../../hooks';
+import { FC } from 'react';
+import { useItems } from '../../../hooks';
 import { Card } from '../Card';
-
-
 
 const Cards: FC = () => {
 
-	const { items } = useItems();
-
-	const { getMoviesFB } = useItemsFB();
-	
-	useEffect(() => {
-		getMoviesFB();										
-	}, []);		
+	const { items } = useItems();	
 	
 	return (		
 		<div className="container d-flex justify-content-center align-items-center h-100">
