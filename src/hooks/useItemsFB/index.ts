@@ -48,9 +48,10 @@ const useItemsFB = () => {
 		setMovieDetail(detail.data);		
 	}
 
-	const isMovieInFB = (id: number) => {						
-		const isMovieIn = itemsFB?.find((item) => item.id === id);	
-		if(isMovieIn) { return true } 					     
+	const isMovieInFB = (id?: string ) => {						
+		const isMovieIn = itemsFB?.find((item) => item.idFB === id);
+		console.log(isMovieIn)	
+		return isMovieIn;				     
 	}	
 	
 	const addMovieUser = async (movie: string | undefined) => {

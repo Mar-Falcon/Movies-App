@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth, useItemsFB } from '../../../hooks';
 import { Item } from '../../../types';
@@ -11,9 +11,13 @@ type Props = {
 
 const Card: FC <Props> = ({item}) => {	
 	
-	const { addItemsFB, deleteMoviesFB, addMovieUser, removeMovieUser, isMovieViewed,  isMovieInFB } = useItemsFB();	
+	const { addItemsFB, deleteMoviesFB, addMovieUser, removeMovieUser, isMovieViewed,  isMovieInFB, getMoviesFB } = useItemsFB();	
 
 	const { currentUser } = useAuth();	
+
+	useEffect(() => {
+		getMoviesFB();										
+	}, []);	
 		
 	return (			
 		<div className="card text-center bg-transparent mb-2">		
@@ -32,9 +36,9 @@ const Card: FC <Props> = ({item}) => {
 			</div>
 			</Link> 
 			<div className="card-footer border-top-0 bg-transparent">
-			{currentUser?.role === 'admin' && !isMovieInFB(item.id) && ( 
+			{currentUser?.role === 'admin' && !isMovieInFB(item.idFB) && ( 
 				<button className="btn btn-outline-secondary" type="submit" onClick={()=> addItemsFB(item)}> Save </button>)}
-			{currentUser?.role === 'admin' && !isMovieInFB(item.id) &&( 
+			{currentUser?.role === 'admin' && isMovieInFB(item.idFB) &&( 
 				<button className="btn btn-outline-danger" type="submit" onClick={()=> deleteMoviesFB(item.idFB)}> Delete </button> 
 			)}								
 			{currentUser?.role === 'user' && !isMovieViewed(item.idFB) && ( 
