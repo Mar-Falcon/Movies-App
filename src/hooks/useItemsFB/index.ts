@@ -8,12 +8,12 @@ const useItemsFB = () => {
 
 	const [itemsFB, setItemsFB] = useState<Item[]>();
 	const [movieDetail, setMovieDetail] = useState<Item>();	
-	const [movieViewed, setMovieViewed] = useState<string| undefined>()	
-	
-	const { currentUser } = useAuth();
+		
+	const { currentUser, UpdateUserData } = useAuth();
 	
 	const addItemsFB = async (datos: Item) => {		
 		await moviesFB.addMovies(datos);
+		await getMoviesFB();
 	}
 
 	const getMoviesFB = async () => {
@@ -40,25 +40,37 @@ const useItemsFB = () => {
 		if (window.confirm("Are you sure you want to delete this movie?")){
 			 await moviesFB.deleteMovies(idFB);	
 		};
+		await getMoviesFB();						
 	}
 
 	const getDetail = async (idFB: string) => {
 		const detail = await moviesFB.getMovieIdFB(idFB);
 		setMovieDetail(detail.data);		
+	}
+
+	const isMovieInFB = (id: number) => {						
+		const isMovieIn = itemsFB?.find((item) => item.id === id);	
+		if(isMovieIn) { return true } 					     
 	}	
 	
 	const addMovieUser = async (movie: string | undefined) => {
-		const viewedItems = currentUser?.viewed || [""]; 
-		await api.patch(`/users/${currentUser?.id}.json`, {viewed: [...viewedItems, movie]} );	
-		setMovieViewed(movie);	
+		const viewedItems = currentUser?.viewed || []; 
+		await api.patch(`/users/${currentUser?.id}.json`, {viewed: [...viewedItems, movie]});
+		UpdateUserData();				
 	};
 	
 	const removeMovieUser = async (movie: string | undefined) => {
 		const viewedItems =  currentUser?.viewed?.filter((i) => i !== movie)
-	      await api.patch(`users/${currentUser?.id}.json`, {viewed: viewedItems, })
+		await api.patch(`users/${currentUser?.id}.json`, {viewed: viewedItems, })
+		UpdateUserData();	      	      
+	}
+
+	const isMovieViewed = (idFB: string | undefined) => {
+		const viewed = currentUser?.viewed?.find((i) => i === idFB);		
+		return viewed;
 	}
 	
-	return { addItemsFB, getMoviesFB, itemsFB, deleteMoviesFB, getDetail, movieDetail, setMovieDetail, filterMovies, filterSeries, addMovieUser, removeMovieUser, movieViewed};
+	return { addItemsFB, getMoviesFB, itemsFB, deleteMoviesFB, getDetail, movieDetail, setMovieDetail, filterMovies, filterSeries, addMovieUser, removeMovieUser, isMovieViewed, isMovieInFB };
 
 }
 
