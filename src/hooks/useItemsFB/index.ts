@@ -48,11 +48,9 @@ const useItemsFB = () => {
 		setMovieDetail(detail.data);		
 	}
 
-	const isMovieInFB = (id?: string ) => {						
-		const isMovieIn = itemsFB?.find((item) => item.idFB === id);
-		console.log(isMovieIn)	
-		return isMovieIn;				     
-	}	
+	const isMovieInFB = (id?: number) => {
+		return itemsFB?.find((item) => item.id === id);
+	};
 	
 	const addMovieUser = async (movie: string | undefined) => {
 		const viewedItems = currentUser?.viewed || []; 
