@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { useAuth, useItems, useItemsFB } from '../../../hooks';
+import { useAuth } from '../../../hooks';
 import { ApiResponse } from '../../../types';
 import { Card } from '../Card';
 

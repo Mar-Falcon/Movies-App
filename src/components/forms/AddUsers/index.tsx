@@ -1,9 +1,9 @@
+import { yupResolver } from "@hookform/resolvers/yup";
 import { FC } from "react";
 import { useForm } from "react-hook-form";
 import { AddUserType } from "../../../types";
 import { defaultValues } from "./defaultValues";
 import { validationSchema } from "./validationSchema";
-import { yupResolver } from "@hookform/resolvers/yup";
 import { useUsers } from "../../../hooks";
 import { Link, useHistory } from "react-router-dom";
 
@@ -17,12 +17,8 @@ const AddUsers: FC = () => {
 	});
       
 	const onSubmit = async (data: AddUserType) => {
-		try{
-			await addUser(data);	
-			push("/login")
-		} catch (error){
-			console.log(error);			
-		}	  
+		await addUser(data);	
+		push("/login");		
 	};
       
 	return (
