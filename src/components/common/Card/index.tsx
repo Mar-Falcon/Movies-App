@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { useItemsFB } from '../../../hooks';
 import { Item, User } from '../../../types';
@@ -12,7 +12,7 @@ type Props = {
 
 const Card: FC <Props> = ({item, currentUser}) => {	
 	
-	const { addItemsFB, deleteMoviesFB, addMovieUser, removeMovieUser, isMovieViewed,  isMovieInFB, getMoviesFB } = useItemsFB();		
+	const { addItemsFB, deleteMoviesFB, addMovieUser, removeMovieUser, isMovieViewed,  isMovieInFB } = useItemsFB();		
 
   const addItems = async (item: Item) => {
     await addItemsFB(item);
@@ -27,13 +27,9 @@ const Card: FC <Props> = ({item, currentUser}) => {
   };
 
   const removeMovie = (user: Partial<User>, id?: string) => {
-    removeMovieUser(user, id);
+    removeMovieUser(user, id);    
   };
 
-	// useEffect(() => {
-	// 	getMoviesFB();										
-	// }, []);	
-		
 	return (			
 		<div className="card text-center bg-transparent mb-2">		
 			<Link to={`/detail/${item.idFB}`}className="nav-link">	
