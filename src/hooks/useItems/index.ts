@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { searchMulti } from "../../api";
 import { ApiResponse, Filter } from "../../types";
@@ -38,13 +38,8 @@ const useItems = () => {
 		const response = await searchMulti.getVideo(id);
 		return response;
 	}	
-	
-	useEffect(() => {
-		getSearchMulti({page, search}).then((response) => 
-		setLastPage(response.total_pages)); 		
-	}, [page, search]);
 
-	return { page, search, items, setItems, setSearchParams, setPageParams, getSearchMulti, getMovieTrailer, lastPage };
+	return { page, search, items, setItems, setSearchParams, setPageParams, getSearchMulti, getMovieTrailer, lastPage, setLastPage };
 }
 
 export { useItems };

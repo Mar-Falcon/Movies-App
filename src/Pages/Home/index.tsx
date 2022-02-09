@@ -1,11 +1,13 @@
 import { FC, useEffect } from "react";
 import { Card, Layout} from "../../components";
 import { WithAuth } from "../../hoc";
-import { useItemsFB } from "../../hooks";
+import { useAuth, useItemsFB } from "../../hooks";
 
 const Home: FC = () => {
 	
 	const { itemsFB, getMoviesFB } = useItemsFB();
+
+	const { currentUser } = useAuth();
 
         useEffect(() => {
 	       getMoviesFB();							
@@ -21,7 +23,9 @@ const Home: FC = () => {
                   				title: item.title || item.name,
                   				release_date: item.release_date || item.first_air_date,
                   				media_type: item.media_type || "movie",                
-					}}/>
+					}}
+					currentUser={currentUser!}
+					/>
 				</div>)})}			
 			</div>			
 		</div>

@@ -1,11 +1,16 @@
 import { FC } from 'react';
-import { useItems } from '../../../hooks';
+import { useAuth, useItems, useItemsFB } from '../../../hooks';
+import { ApiResponse } from '../../../types';
 import { Card } from '../Card';
 
-const Cards: FC = () => {
+type Props = {
+  items: ApiResponse | undefined;
+};
 
-	const { items } = useItems();	
-	
+const Cards: FC<Props> = ({ items }) => {
+
+  const { currentUser } = useAuth();
+  	
 	return (		
 		<div className="container d-flex justify-content-center align-items-center h-100">
 			<div className="row">
@@ -15,7 +20,9 @@ const Cards: FC = () => {
                   				title: item.title || item.name,
                   				release_date: item.release_date || item.first_air_date,
                   				media_type: item.media_type || "movie",
-               				}}/>
+               				}}
+                      currentUser={currentUser!}
+                      />
 				</div>)})}			
 			</div>			
 		</div>

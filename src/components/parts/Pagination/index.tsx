@@ -1,9 +1,14 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { useItems } from "../../../hooks";
 
 const Pagination: FC = () => {
 
-	const { setPageParams, page, lastPage } = useItems(); 
+	const { setPageParams, page, lastPage, getSearchMulti, search, setLastPage } = useItems(); 
+
+	useEffect(() => {
+		getSearchMulti({page, search}).then((response) => 
+		setLastPage(response.total_pages)); 		
+	}, [page, search]);
 	
 	let activeButton = true;
 
