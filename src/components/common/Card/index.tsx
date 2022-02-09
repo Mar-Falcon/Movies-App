@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth, useItemsFB } from '../../../hooks';
 import { Item } from '../../../types';
@@ -11,9 +11,13 @@ type Props = {
 
 const Card: FC <Props> = ({item}) => {	
 	
-	const { addItemsFB, deleteMoviesFB, addMovieUser, removeMovieUser, isMovieViewed,  isMovieInFB } = useItemsFB();	
+	const { addItemsFB, deleteMoviesFB, addMovieUser, removeMovieUser, isMovieViewed,  isMovieInFB, getMoviesFB } = useItemsFB();	
 
 	const { currentUser } = useAuth();	
+
+	useEffect(() => {
+		getMoviesFB();										
+	}, []);	
 		
 	return (			
 		<div className="card text-center bg-transparent mb-2">		

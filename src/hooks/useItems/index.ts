@@ -1,4 +1,4 @@
-import {  useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { searchMulti } from "../../api";
 import { ApiResponse, Filter } from "../../types";
@@ -20,6 +20,7 @@ const useItems = () => {
 		} else {
 		  response = await searchMulti.getMovies({page, search});
 		};
+		setItems(response);				
 		return response;		
 	};
 	
@@ -31,24 +32,19 @@ const useItems = () => {
 	const setPageParams = (newPage: number) => {
 		params.set("page", newPage.toString());
 		push(`${window.location.pathname}?${params.toString()}`);
-	      };
+	};
 
 	const getMovieTrailer = async (id: number | undefined) => {
 		const response = await searchMulti.getVideo(id);
 		return response;
-	}
-    
-	useEffect(() => {
-		getSearchMulti({page, search}).then((response) => 
-		setItems(response));			
-	}, [page, search]);
-
+	}	
+	
 	useEffect(() => {
 		getSearchMulti({page, search}).then((response) => 
 		setLastPage(response.total_pages)); 		
 	}, [page, search]);
 
-	return { page, search, items, setItems, setSearchParams, setPageParams, getSearchMulti, lastPage, getMovieTrailer };
+	return { page, search, items, setItems, setSearchParams, setPageParams, getSearchMulti, getMovieTrailer, lastPage };
 }
 
 export { useItems };

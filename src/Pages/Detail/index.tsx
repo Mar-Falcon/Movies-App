@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { DetailCard, Layout, Movies, Series } from "../../components";
+import { DetailCard, Layout, Movies } from "../../components";
 import { WithAuth } from "../../hoc";		
 
 
@@ -7,15 +7,12 @@ const Detail: FC = () => {
 	
 	return (
 		<Layout>
-			<div className="container">
-				<div className="w-100">				
+			<div className="container">								
 					<DetailCard/>
-				</div>
-				<div className="container d-flex justify-content-center align-items-center">
-					<div className="w-100 row">
+					<div className="d-flex justify-content-center align-items-center">
+					<div className="row">
 						<h3 className="text-white mt-5">Also...</h3>
-						<Movies/>
-						<Series/>
+						<Movies/>						
 					</div>
 				</div>
 			</div>

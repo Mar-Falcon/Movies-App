@@ -5,7 +5,7 @@ import { useItems } from "../../hooks";
 
 const Admin: FC = () => {
 
-	const { setSearchParams } = useItems();
+	const { setSearchParams } = useItems();	
 
 	return (
 		<>
