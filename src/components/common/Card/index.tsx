@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useItemsFB } from '../../../hooks';
 import { Item, User } from '../../../types';
@@ -12,23 +12,26 @@ type Props = {
 
 const Card: FC <Props> = ({item, currentUser}) => {	
 	
-	const { addItemsFB, deleteMoviesFB, addMovieUser, removeMovieUser, isMovieViewed,  isMovieInFB } = useItemsFB();		
+	const { addItemsFB, deleteMoviesFB, addMovieUser, removeMovieUser, isMovieViewed,  isMovieInFB, itemsFB, setItemsFB } = useItemsFB();		
 
-  const addItems = async (item: Item) => {
-    await addItemsFB(item);
-  };
+  	const addItems = async (item: Item) => {
+    		await addItemsFB(item);
+		    setItemsFB(itemsFB)	
+  	};
 
-  const deleteItems = async (id?: string) => {
-    await deleteMoviesFB(id);
-  };
+ 	 const deleteItems = async (id?: number) => {
+		const idFB =  itemsFB?.find((item) => item.id === id);
+    		await deleteMoviesFB(idFB?.idFB);
+		    //setItemsFB(itemsFB)	    
+  	};
 
-  const addMovie = (user: Partial<User>, id?: string) => {
-    addMovieUser(user, id);
-  };
+  	const addMovie = (user: Partial<User>, id?: string) => {
+    		addMovieUser(user, id);
+  	};
 
-  const removeMovie = (user: Partial<User>, id?: string) => {
-    removeMovieUser(user, id);    
-  };
+  	const removeMovie = (user: Partial<User>, id?: string) => {
+    		removeMovieUser(user, id);    
+  	};  
 
 	return (			
 		<div className="card text-center bg-transparent mb-2">		
@@ -50,7 +53,7 @@ const Card: FC <Props> = ({item, currentUser}) => {
 			{currentUser?.role === 'admin' && !isMovieInFB(item.id) && ( 
 				<button className="btn btn-outline-secondary" type="submit" onClick={()=> addItems(item)}> Save </button>)}
 			{currentUser?.role === 'admin' && isMovieInFB(item.id) &&( 
-				<button className="btn btn-outline-danger" type="submit" onClick={()=> deleteItems(item.idFB)}> Delete </button> 
+				<button className="btn btn-outline-danger" type="submit" onClick={()=> deleteItems(item.id)}> Delete </button> 
 			)}								
 			{currentUser?.role === 'user' && !isMovieViewed(currentUser, item.idFB) && ( 
 				<button className="btn btn-outline-warning" type="submit" onClick={()=> addMovie(currentUser, item.idFB)}><FontAwesomeIcon icon={faEyeSlash}></FontAwesomeIcon> </button> )}

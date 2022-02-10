@@ -74,7 +74,7 @@ const useItemsFB = () => {
 		return viewed;
 	}
 	
-	return { addItemsFB, getMoviesFB, itemsFB, deleteMoviesFB, getDetail, movieDetail, setMovieDetail, filterMovies, filterSeries, addMovieUser, removeMovieUser, isMovieViewed, isMovieInFB };
+	return { addItemsFB, getMoviesFB, itemsFB, deleteMoviesFB, getDetail, movieDetail, setMovieDetail, filterMovies, filterSeries, addMovieUser, removeMovieUser, isMovieViewed, isMovieInFB, setItemsFB };
 
 }
 
