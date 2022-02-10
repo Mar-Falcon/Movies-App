@@ -4,18 +4,17 @@ import { Card } from "../../common";
 
 const Movies: FC = () => {
 	
-	const { itemsFB, filterMovies} = useItemsFB();
+	const { itemsFB, filterMovies } = useItemsFB();
 
-  const { currentUser } = useAuth();
+  	const { currentUser } = useAuth();
 
         useEffect(() => {
-	       filterMovies();							
-        }, []);
+	       filterMovies();		       					
+        }, [itemsFB]);	
 
 	return (	
 		<div className="container d-flex justify-content-center align-items-center h-100">
-			<div className="row">
-				
+			<div className="row">				
 				{itemsFB?.map ((item)=>  { return (	
 					<div className="col-md-3">				
 					<Card item={{...item,
@@ -23,8 +22,8 @@ const Movies: FC = () => {
                   				release_date: item.release_date || item.first_air_date,
                   				media_type: item.media_type || "movie",                
 					}}
-          currentUser={currentUser!}
-          />
+          				currentUser={currentUser!}
+         				/>
 					</div>
 				)})}				
 			</div>

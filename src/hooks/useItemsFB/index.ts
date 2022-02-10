@@ -9,9 +9,9 @@ const useItemsFB = () => {
 	const [itemsFB, setItemsFB] = useState<Item[]>();
 	const [movieDetail, setMovieDetail] = useState<Item>();	
 
-  useEffect(() => {
-    if (!itemsFB) getMoviesFB();
-  }, []);
+	useEffect(() => {
+	if (!itemsFB) getMoviesFB();
+	}, []);
 		
 	const { UpdateUserData } = useAuth();
 	

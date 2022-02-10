@@ -4,13 +4,13 @@ import { Card } from "../..";
 
 const Series: FC = () => {
 
-	const {itemsFB, filterSeries} = useItemsFB();
+	const { itemsFB, filterSeries } = useItemsFB();
 
 	const { currentUser } = useAuth();
 
 	useEffect(() => {
 	       filterSeries();        								
-        }, []);
+        }, [itemsFB]);
 
 	return (	
 		<div className="container d-flex justify-content-center align-items-center h-100">

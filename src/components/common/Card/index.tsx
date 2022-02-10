@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { useItemsFB } from '../../../hooks';
 import { Item, User } from '../../../types';
@@ -12,17 +12,15 @@ type Props = {
 
 const Card: FC <Props> = ({item, currentUser}) => {	
 	
-	const { addItemsFB, deleteMoviesFB, addMovieUser, removeMovieUser, isMovieViewed,  isMovieInFB, itemsFB, setItemsFB } = useItemsFB();		
+	const { addItemsFB, deleteMoviesFB, addMovieUser, removeMovieUser, isMovieViewed,  isMovieInFB, itemsFB } = useItemsFB();		
 
   	const addItems = async (item: Item) => {
     		await addItemsFB(item);
-		    setItemsFB(itemsFB)	
   	};
 
  	 const deleteItems = async (id?: number) => {
 		const idFB =  itemsFB?.find((item) => item.id === id);
-    		await deleteMoviesFB(idFB?.idFB);
-		    //setItemsFB(itemsFB)	    
+    		await deleteMoviesFB(idFB?.idFB);		    
   	};
 
   	const addMovie = (user: Partial<User>, id?: string) => {
