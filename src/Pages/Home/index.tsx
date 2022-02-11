@@ -10,7 +10,8 @@ const Home: FC = () => {
 	const { currentUser } = useAuth();
 
         useEffect(() => {
-	       getMoviesFB();							
+		if (!itemsFB)
+		getMoviesFB();							
         }, [getMoviesFB]);
 
 	return (		

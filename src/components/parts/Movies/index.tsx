@@ -9,7 +9,7 @@ const Movies: FC = () => {
   	const { currentUser } = useAuth();
 
         useEffect(() => {
-	       filterMovies();		       					
+		if (!itemsFB) filterMovies();		       					
         }, [itemsFB]);	
 
 	return (	

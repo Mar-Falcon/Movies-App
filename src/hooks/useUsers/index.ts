@@ -4,7 +4,7 @@ import { AddUserType, User } from "../../types"
 
 const useUsers = () => {
 
-	const [users, setUsers] = useState<User[]>();
+	const [users, setUsers] = useState<User[]>([]);	
 
 	const addUser = async (datos: AddUserType) => {
 		await usersApi.addUser(datos);
@@ -19,6 +19,8 @@ const useUsers = () => {
 		if (window.confirm("are you sure you want to delete this user?")){
 			 await usersApi.deleteUser(id);	
 		}
+		const updateUser = users.filter((user) => user.id !== id)		
+		setUsers(updateUser);
 	}
 
 	return { addUser, getUsers, users, deleteUser};

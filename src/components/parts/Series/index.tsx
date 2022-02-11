@@ -9,7 +9,7 @@ const Series: FC = () => {
 	const { currentUser } = useAuth();
 
 	useEffect(() => {
-	       filterSeries();        								
+		if (!itemsFB) filterSeries();        								
         }, [itemsFB]);
 
 	return (	

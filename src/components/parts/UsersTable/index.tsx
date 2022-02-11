@@ -9,9 +9,8 @@ const UsersTable: FC = () => {
 	const { users, getUsers, deleteUser } = useUsers();		
 
 	useEffect(() => {
-		getUsers();
-								
-	}, [getUsers, users]);		
+		getUsers();								
+	}, []);		
 
 	return(
 		<div className="container">
