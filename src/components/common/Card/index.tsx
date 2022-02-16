@@ -7,21 +7,20 @@ import { Item, User } from '../../../types';
 
 type Props = {
 	item: Item;
-  currentUser?: Partial<User>;
+  	currentUser?: Partial<User>;
 }
 
 const Card: FC <Props> = ({item, currentUser}) => {	
 	
-	const { addItemsFB, deleteMoviesFB, addMovieUser, removeMovieUser, isMovieViewed,  isMovieInFB, itemsFB, setItemsFB } = useItemsFB();		
+	const { addItemsFB, deleteMoviesFB, addMovieUser, removeMovieUser, isMovieViewed,  isMovieInFB, itemsFB } = useItemsFB();		
 
   	const addItems = async (item: Item) => {
-    		await addItemsFB(item);
-  	};
+    		await addItemsFB(item);		
+  	};	
 
- 	 const deleteItems = async (id?: number) => {
+ 	const deleteItems = async (id?: number) => {
 		const idFB =  itemsFB?.find((item) => item.id === id);
-    		await deleteMoviesFB(idFB?.idFB);	
-		setItemsFB([]);
+    		await deleteMoviesFB(idFB?.idFB);		   
   	};
 
   	const addMovie = (user: Partial<User>, id?: string) => {

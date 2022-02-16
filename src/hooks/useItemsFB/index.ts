@@ -8,10 +8,10 @@ const useItemsFB = () => {
 
 	const [itemsFB, setItemsFB] = useState<Item[]>();
 	const [movieDetail, setMovieDetail] = useState<Item>();	
-
+	
 	useEffect(() => {
 	if (!itemsFB) getMoviesFB();
-	}, []);
+	}, [itemsFB]);
 		
 	const { UpdateUserData } = useAuth();
 	
@@ -44,8 +44,8 @@ const useItemsFB = () => {
 	const deleteMoviesFB = async (idFB: string | undefined) =>{
 		if (window.confirm("Are you sure you want to delete this movie?")){
 			 await moviesFB.deleteMovies(idFB);	
-		};
-		getMoviesFB();						
+		};		
+		getMoviesFB();							
 	}
 
 	const getDetail = async (idFB: string) => {

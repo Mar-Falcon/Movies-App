@@ -9,8 +9,8 @@ const Movies: FC = () => {
   	const { currentUser } = useAuth();
 
         useEffect(() => {
-		if (!itemsFB) filterMovies();		       					
-        }, [itemsFB]);	
+	       filterMovies();		       					
+        }, []);	
 
 	return (	
 		<div className="container d-flex justify-content-center align-items-center h-100">

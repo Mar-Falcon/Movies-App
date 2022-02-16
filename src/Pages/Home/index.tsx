@@ -1,4 +1,5 @@
 import { FC, useEffect } from "react";
+
 import { Card, Layout} from "../../components";
 import { WithAuth } from "../../hoc";
 import { useAuth, useItemsFB } from "../../hooks";
@@ -7,12 +8,11 @@ const Home: FC = () => {
 	
 	const { itemsFB, getMoviesFB } = useItemsFB();
 
-	const { currentUser } = useAuth();
+	const { currentUser } = useAuth();	
 
-        useEffect(() => {
-		if (!itemsFB)
-		getMoviesFB();							
-        }, [getMoviesFB]);
+        useEffect(() => {		
+		getMoviesFB();								
+        }, []);	
 
 	return (		
 		<Layout>

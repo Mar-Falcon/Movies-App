@@ -9,8 +9,8 @@ const Series: FC = () => {
 	const { currentUser } = useAuth();
 
 	useEffect(() => {
-		if (!itemsFB) filterSeries();        								
-        }, [itemsFB]);
+		filterSeries();        								
+        }, []);
 
 	return (	
 		<div className="container d-flex justify-content-center align-items-center h-100">
