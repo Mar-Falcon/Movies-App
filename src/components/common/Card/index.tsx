@@ -12,8 +12,8 @@ type Props = {
 
 const Card: FC <Props> = ({item, currentUser}) => {	
 	
-	const { addItemsFB, deleteMoviesFB, addMovieUser, removeMovieUser, isMovieViewed,  isMovieInFB, itemsFB } = useItemsFB();		
-
+	const { addItemsFB, deleteMoviesFB, addMovieUser, removeMovieUser, isMovieViewed,  isMovieInFB, itemsFB } = useItemsFB();	
+	
   	const addItems = async (item: Item) => {
     		await addItemsFB(item);		
   	};	
@@ -29,7 +29,7 @@ const Card: FC <Props> = ({item, currentUser}) => {
 
   	const removeMovie = (user: Partial<User>, id?: string) => {
     		removeMovieUser(user, id);    
-  	};  
+  	};  	
 
 	return (			
 		<div className="card text-center bg-transparent mb-2">		

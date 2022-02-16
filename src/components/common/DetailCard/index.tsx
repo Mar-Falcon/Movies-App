@@ -26,7 +26,8 @@ const DetailCard: FC = () => {
 		getMovieTrailer(movieDetail?.id).then((results) => setTrailers(results))				
 	},[movieDetail])
 
-	return (				
+	return (<>
+		{movieDetail?.id !== undefined && ( 				
 		<div className="card bg-transparent text-white d-flex p-4">				
 			<div className="row">
 				<div className="car-body col-md-7">
@@ -60,7 +61,8 @@ const DetailCard: FC = () => {
 					<img src={`http://image.tmdb.org/t/p/w500${movieDetail?.poster_path}`} alt={movieDetail?.title} className='img-responsive' />
 				</div>												
 			</div>		
-		</div>
+		</div>)}
+		</>
 	);
 };
 
