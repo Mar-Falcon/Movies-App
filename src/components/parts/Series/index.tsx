@@ -1,13 +1,15 @@
 import { FC, useEffect } from "react";
-import { useItemsFB } from "../../../hooks";
+import { useAuth, useItemsFB } from "../../../hooks";
 import { Card } from "../..";
 
 const Series: FC = () => {
 
-	const {itemsFB, filterSeries} = useItemsFB();
+	const { itemsFB, filterSeries } = useItemsFB();
+
+	const { currentUser } = useAuth();
 
 	useEffect(() => {
-	       filterSeries();        								
+		filterSeries();        								
         }, []);
 
 	return (	
@@ -19,7 +21,9 @@ const Series: FC = () => {
 							title: item.title || item.name,
 							release_date: item.release_date || item.first_air_date,
 							media_type: item.media_type || "movie",                
-						}}/>
+						}}
+						currentUser={currentUser!}
+						/>
 					</div>
 				)})}				
 			</div>

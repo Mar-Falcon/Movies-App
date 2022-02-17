@@ -3,6 +3,7 @@ import { Layout, Movies } from "../../components";
 import { WithAuth } from "../../hoc";
 
 const MoviesPage: FC = () => {
+	
 	return (
 		<Layout>
 			<Movies/>
