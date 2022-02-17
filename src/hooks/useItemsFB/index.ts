@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useAuth } from "..";
+//import { useAuth } from "..";
 import { moviesFB } from "../../api";
 import { Item, User } from "../../types";
 import { api } from "../../utils";
@@ -13,7 +13,7 @@ const useItemsFB = () => {
 	if (!itemsFB) getMoviesFB();
 	}, [itemsFB]);
 		
-	const { UpdateUserData } = useAuth();
+	//const { UpdateUserData } = useAuth();
 	
 	const addItemsFB = async (datos: Item) => {		
 		await moviesFB.addMovies(datos);
@@ -60,13 +60,13 @@ const useItemsFB = () => {
 	const addMovieUser = async (currentUser: Partial<User>, movie?: string) => {
 		const viewedItems = currentUser?.viewed || []; 
 		await api.patch(`/users/${currentUser?.id}.json`, {viewed: [...viewedItems, movie]});
-		UpdateUserData();				
+		//UpdateUserData();				
 	};
 	
 	const removeMovieUser = async (currentUser: Partial<User>, movie?: string) => {
 		const viewedItems =  currentUser?.viewed?.filter((i) => i !== movie)
 		await api.patch(`users/${currentUser?.id}.json`, {viewed: viewedItems, })
-		UpdateUserData();	      	      
+		//UpdateUserData();	      	      
 	}
 
 	const isMovieViewed = (currentUser: Partial<User>, idFB: string | undefined) => {

@@ -9,7 +9,7 @@ type Props = {
 
 const Cards: FC<Props> = ({ items }) => {
 
-  const { currentUser } = useAuth();
+  const { currentUser, updateUserData } = useAuth();
   	
 	return (		
 		<div className="container d-flex justify-content-center align-items-center h-100">
@@ -22,6 +22,7 @@ const Cards: FC<Props> = ({ items }) => {
                   				media_type: item.media_type || "movie",
                				}}
                       currentUser={currentUser!}
+		      updateUserData={updateUserData}
                       />
 				</div>)})}			
 			</div>			

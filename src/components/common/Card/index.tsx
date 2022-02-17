@@ -10,9 +10,10 @@ import noimage from '../../../assets/img/noimage.jpg';
 type Props = {
 	item: Item;
   	currentUser?: Partial<User>;
+	updateUserData: () => void;
 }
 
-const Card: FC <Props> = ({item, currentUser}) => {	
+const Card: FC <Props> = ({item, currentUser, updateUserData}) => {	
 	
 	const { addItemsFB, deleteMoviesFB, addMovieUser, removeMovieUser, isMovieViewed,  isMovieInFB, itemsFB } = useItemsFB();	
 	
@@ -26,11 +27,13 @@ const Card: FC <Props> = ({item, currentUser}) => {
   	};
 
   	const addMovie = (user: Partial<User>, id?: string) => {
-    		addMovieUser(user, id);
+		updateUserData();
+    		addMovieUser(user, id);		
   	};
 
   	const removeMovie = (user: Partial<User>, id?: string) => {
-    		removeMovieUser(user, id);    
+		updateUserData();
+    		removeMovieUser(user, id);		 
   	}; 
 	  
 	const image = (image: string | undefined) =>

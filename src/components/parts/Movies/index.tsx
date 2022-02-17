@@ -6,7 +6,7 @@ const Movies: FC = () => {
 	
 	const { itemsFB, filterMovies } = useItemsFB();
 
-  	const { currentUser } = useAuth();
+  	const { currentUser, updateUserData } = useAuth();
 
         useEffect(() => {
 	       filterMovies();		       					
@@ -23,6 +23,7 @@ const Movies: FC = () => {
                   				media_type: item.media_type || "movie",                
 					}}
           				currentUser={currentUser!}
+					updateUserData={updateUserData}
          				/>
 					</div>
 				)})}				
