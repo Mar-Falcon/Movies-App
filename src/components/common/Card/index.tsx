@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { useItemsFB } from '../../../hooks';
 import { Item, User } from '../../../types';
 import { Rating } from '../../parts/StarRating';
+import noimage from '../../../assets/img/noimage.jpg';
 
 type Props = {
 	item: Item;
@@ -30,13 +31,16 @@ const Card: FC <Props> = ({item, currentUser}) => {
 
   	const removeMovie = (user: Partial<User>, id?: string) => {
     		removeMovieUser(user, id);    
-  	};  	
+  	}; 
+	  
+	const image = (image: string | undefined) =>
+	!image ? noimage : `http://image.tmdb.org/t/p/w500/${image}`;
 
 	return (			
 		<div className="card text-center bg-transparent mb-2">		
 			<Link to={`/detail/${item.idFB}`}className="nav-link">	
 			<div className="card-body text-white">
-				<img src={`http://image.tmdb.org/t/p/w500${item.poster_path}`} alt={item.title} className='img-responsive col-md-9 mb-3 w-100' />
+				<img src={image(item.poster_path)} alt={item.title} className='img-responsive col-md-9 mb-3 w-100' />
 				<h4 className="card-title">{item.title || item.name}</h4>
 				<div>
 				<Rating rating={item.vote_average} />
