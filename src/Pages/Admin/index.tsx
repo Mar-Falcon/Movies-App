@@ -11,11 +11,13 @@ const Admin: FC = () => {
 		getSearchMulti({ page, search });
 	}, [page, search]);
 
+	const refresh = ()=>{}	
+
 	return (
 		<>
 		<Layout>
 			<Search handleChange={setSearchParams}/>
-			<Cards items={items}/>
+			<Cards items={items} refresh={refresh}/>
 			<Pagination/>
 		</Layout>
 		</>

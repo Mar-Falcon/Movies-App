@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react";
+import { FC, useEffect, useState } from "react";
 import { useAuth, useItemsFB } from "../../../hooks";
 import { Card } from "../..";
 
@@ -8,9 +8,15 @@ const Series: FC = () => {
 
 	const { currentUser, updateUserData } = useAuth();
 
+	const [value,setValue] = useState({});
+
 	useEffect(() => {
-		filterSeries();        								
-        }, []);
+	       filterSeries();								
+	}, [value]);	
+  
+	const refresh = ()=>{
+		setValue({});
+	}  
 
 	return (	
 		<div className="container d-flex justify-content-center align-items-center h-100">
@@ -24,6 +30,7 @@ const Series: FC = () => {
 						}}
 						currentUser={currentUser!}
 						updateUserData={updateUserData}
+						refresh={refresh}
 						/>
 					</div>
 				)})}				

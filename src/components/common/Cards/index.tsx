@@ -5,9 +5,10 @@ import { Card } from '../Card';
 
 type Props = {
   items: ApiResponse | undefined;
+  refresh: () => void;
 };
 
-const Cards: FC<Props> = ({ items }) => {
+const Cards: FC<Props> = ({ items, refresh }) => {
 
   const { currentUser, updateUserData } = useAuth();
   	
@@ -23,6 +24,7 @@ const Cards: FC<Props> = ({ items }) => {
                				}}
                       currentUser={currentUser!}
 		      updateUserData={updateUserData}
+		      refresh={refresh}
                       />
 				</div>)})}			
 			</div>			

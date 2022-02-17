@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react";
+import { FC, useEffect, useState } from "react";
 import { Card, Layout} from "../../components";
 import { WithAuth } from "../../hoc";
 import { useAuth, useItemsFB } from "../../hooks";
@@ -9,9 +9,15 @@ const Home: FC = () => {
 	
 	const { currentUser, updateUserData } = useAuth();	
 
+	const [value,setValue] = useState({});
+
         useEffect(() => {
 		getMoviesFB();								
-        }, []);
+        }, [value]);	
+
+        const refresh = ()=>{
+		setValue({});
+	}	
 	
 	return (		
 		<Layout>
@@ -26,6 +32,7 @@ const Home: FC = () => {
 					}}
 					currentUser={currentUser!}
 					updateUserData={updateUserData}
+					refresh={refresh}
 					/>
 				</div>)})}			
 			</div>			
