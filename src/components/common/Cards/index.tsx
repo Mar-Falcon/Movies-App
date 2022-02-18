@@ -4,11 +4,10 @@ import { ApiResponse } from '../../../types';
 import { Card } from '../Card';
 
 type Props = {
-  items: ApiResponse | undefined;
-  refresh: () => void;
+  items: ApiResponse | undefined;  
 };
 
-const Cards: FC<Props> = ({ items, refresh }) => {
+const Cards: FC<Props> = ({ items }) => {
 
   const { currentUser, updateUserData } = useAuth();
   	
@@ -22,10 +21,9 @@ const Cards: FC<Props> = ({ items, refresh }) => {
                   				release_date: item.release_date || item.first_air_date,
                   				media_type: item.media_type || "movie",
                				}}
-                      currentUser={currentUser!}
-		      updateUserData={updateUserData}
-		      refresh={refresh}
-                      />
+                      			currentUser={currentUser!}
+		      			updateUserData={updateUserData}		     
+                      			/>
 				</div>)})}			
 			</div>			
 		</div>

@@ -9,15 +9,13 @@ const Admin: FC = () => {
 	
 	useEffect(() => {
 		getSearchMulti({ page, search });
-	}, [page, search]);
-
-	const refresh = ()=>{}	
+	}, [page, search]);	
 
 	return (
 		<>
 		<Layout>
 			<Search handleChange={setSearchParams}/>
-			<Cards items={items} refresh={refresh}/>
+			<Cards items={items}/>
 			<Pagination/>
 		</Layout>
 		</>
