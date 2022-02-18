@@ -102,11 +102,11 @@ const useAuth = ()  => {
 		setCurrentUser(undefined)
 	};
 
-	const UpdateUserData = () => {
-		loginWithToken()
+	const updateUserData = () => {
+		loginWithToken();
 	}
    
-	return { login, loginWithToken, logout, hasUserLoggedIn, currentUser, UpdateUserData}
+	return { login, loginWithToken, logout, hasUserLoggedIn, currentUser, updateUserData}
 }    
     
 export { useAuth }

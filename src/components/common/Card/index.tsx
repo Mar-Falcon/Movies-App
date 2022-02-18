@@ -10,9 +10,11 @@ import noimage from '../../../assets/img/noimage.jpg';
 type Props = {
 	item: Item;
   	currentUser?: Partial<User>;
+	updateUserData: () => void;
+	refresh?: () => void;
 }
 
-const Card: FC <Props> = ({item, currentUser}) => {	
+const Card: FC <Props> = ({item, currentUser, updateUserData, refresh}) => {	
 	
 	const { addItemsFB, deleteMoviesFB, addMovieUser, removeMovieUser, isMovieViewed,  isMovieInFB, itemsFB } = useItemsFB();	
 	
@@ -22,15 +24,18 @@ const Card: FC <Props> = ({item, currentUser}) => {
 
  	const deleteItems = async (id?: number) => {
 		const idFB =  itemsFB?.find((item) => item.id === id);
-    		await deleteMoviesFB(idFB?.idFB);		   
+    		await deleteMoviesFB(idFB?.idFB);
+		if (refresh) refresh();		   
   	};
 
   	const addMovie = (user: Partial<User>, id?: string) => {
-    		addMovieUser(user, id);
+		updateUserData();
+    		addMovieUser(user, id);		
   	};
 
   	const removeMovie = (user: Partial<User>, id?: string) => {
-    		removeMovieUser(user, id);    
+		updateUserData();
+    		removeMovieUser(user, id);		 
   	}; 
 	  
 	const image = (image: string | undefined) =>

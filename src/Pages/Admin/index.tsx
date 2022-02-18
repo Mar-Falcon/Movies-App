@@ -9,7 +9,7 @@ const Admin: FC = () => {
 	
 	useEffect(() => {
 		getSearchMulti({ page, search });
-	}, [page, search]);
+	}, [page, search]);	
 
 	return (
 		<>
