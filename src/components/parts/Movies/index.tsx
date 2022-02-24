@@ -1,22 +1,16 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect } from "react";
 import { useAuth, useItemsFB } from "../../../hooks";
 import { Card } from "../../common";
 
 const Movies: FC = () => {
 	
-	const { itemsFB, filterMovies } = useItemsFB();
+	const { itemsFB, filterMovies,  deleteMoviesFB } = useItemsFB();
 
-  	const { currentUser, updateUserData } = useAuth();
-
-	const [value,setValue] = useState({});
+  	const { currentUser, updateUserData } = useAuth();	
 
 	useEffect(() => {
 	       filterMovies();								
-	}, [value]);	
-  
-	const refresh = ()=>{
-		setValue({});
-	}       
+	}, []);		
 
 	return (	
 		<div className="container d-flex justify-content-center align-items-center h-100">
@@ -30,7 +24,7 @@ const Movies: FC = () => {
 					}}
           				currentUser={currentUser!}
 					updateUserData={updateUserData}
-					refresh={refresh}
+					updateItems={deleteMoviesFB}
          				/>
 					</div>
 				)})}				

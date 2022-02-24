@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { useAuth } from '../../../hooks';
+import { useAuth, useItemsFB } from '../../../hooks';
 import { ApiResponse } from '../../../types';
 import { Card } from '../Card';
 
@@ -10,6 +10,8 @@ type Props = {
 const Cards: FC<Props> = ({ items }) => {
 
   const { currentUser, updateUserData } = useAuth();
+
+  const { deleteMoviesFB } = useItemsFB();
   	
 	return (		
 		<div className="container d-flex justify-content-center align-items-center h-100">
@@ -22,7 +24,8 @@ const Cards: FC<Props> = ({ items }) => {
                   				media_type: item.media_type || "movie",
                				}}
                       			currentUser={currentUser!}
-		      			updateUserData={updateUserData}		     
+		      			updateUserData={updateUserData}
+					updateItems={deleteMoviesFB}		     
                       			/>
 				</div>)})}			
 			</div>			

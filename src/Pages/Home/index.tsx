@@ -1,23 +1,17 @@
-import { FC, useEffect, useState } from "react";
-import { Card, Layout} from "../../components";
+import { FC, useEffect } from "react";
+import { Card, Layout } from "../../components";
 import { WithAuth } from "../../hoc";
 import { useAuth, useItemsFB } from "../../hooks";
 
 const Home: FC = () => {
 	
-	const { itemsFB, getMoviesFB } = useItemsFB();
+	const { itemsFB, getMoviesFB, deleteMoviesFB } = useItemsFB();
 	
-	const { currentUser, updateUserData } = useAuth();	
-
-	const [value,setValue] = useState({});
+	const { currentUser, updateUserData} = useAuth();	
 
         useEffect(() => {
 		getMoviesFB();								
-        }, [value]);	
-
-        const refresh = ()=>{
-		setValue({});
-	}	
+        }, []);	        
 	
 	return (		
 		<Layout>
@@ -32,7 +26,7 @@ const Home: FC = () => {
 					}}
 					currentUser={currentUser!}
 					updateUserData={updateUserData}
-					refresh={refresh}
+					updateItems={deleteMoviesFB}
 					/>
 				</div>)})}			
 			</div>			
