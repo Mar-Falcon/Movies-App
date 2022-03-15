@@ -1,3 +1,25 @@
+# Movies-App 🎬  
+
+#### **ADA ITW** Final Project.
+
+Movies-App is a movie content management app. 
+
+It is built in REACTJS and TYPESCRIPT. 
+The forms validate the information with YUP and REACT FORMS.
+Styles were implemented with Bootstrap.
+
+Login by role. The ADMIN manages which contents will be available online for USERS by adding or deleting available movies or series. From the USER interface, you can see the details of the contents and indicate if they were viewed or not.
+
+#### Responsive :iphone::computer:
+:ok_hand:
+
+#### Link :link:
+https://mar-falcon.github.io/Movies-App
+***
+👆🏻To login in by roles:
+For Admin, email: admin@ada.com Password: Admin123.
+For users, create your user.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
