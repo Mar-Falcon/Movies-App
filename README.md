@@ -15,10 +15,12 @@ Login by role. The ADMIN manages which contents will be available online for USE
 
 #### Link :link:
 https://mar-falcon.github.io/Movies-App
-***
+
 👆🏻To login in by roles:
 For Admin, email: admin@ada.com Password: Admin123.
 For users, create your user.
+
+***
 
 # Getting Started with Create React App
 
