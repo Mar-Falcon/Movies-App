@@ -7,7 +7,9 @@ const Login: FC = () => {
 	
 	return (
 		<>
+		<div className="container mt-5">
 		<LoginUser/>
+		</div>
 		</>
 	);
 };

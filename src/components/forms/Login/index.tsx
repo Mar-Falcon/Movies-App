@@ -24,12 +24,12 @@ const LoginUser: FC = () => {
 	return (
 	  <form action="" onSubmit={handleSubmit(onSubmit)} className="container row g-3">	    
 	    <div className="form-group">
-	      <label htmlFor="" className="form-label">E-mail</label>
+	      <label htmlFor="" className="form-label text-white">E-mail</label>
 	      <input id="email" type="email" {...register("email")} className="form-control" />
 	      <span className="text-white">{formState.errors.email?.message}</span>
 	    </div>      
 	    <div className="form-group">
-	      <label htmlFor="" className="form-label">Password</label>
+	      <label htmlFor="" className="form-label text-white">Password</label>
 	      <input  id="pass" type="password" {...register("password")} className="form-control" />
 	      <span className="text-white">
 		{formState.errors.password?.message}
@@ -41,6 +41,9 @@ const LoginUser: FC = () => {
 	    <div className="d-flex justify-content-center">
 	    	<Link to="/signup" className="">I don´t have an account
 		</Link>
+	    </div>
+	    <div className="d-flex justify-content-center">
+	    	<div className="text-white">To login in by roles: For Admin, email: admin@ada.com Password: Admin123. For users, create your user.</div>
 	    </div>
 	  </form>
 	);
